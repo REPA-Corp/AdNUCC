@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+
+    <h1>Logged in account: <span id="namehere"></span></h1>
+
+    <button id="signOut">LOGOUT</button>
+    <div id="wholeBox">
+        <div id="rightBox">
+            <h1>Some contents here</h1>
+        </div>
+
+        <div id='leftBox'>
+            <div id="loginBox">
+                <h2>Login</h2>
+                <form action="#">
+                    <div>
+                        <label for="Lemail">Email</label>
+                        <input type="email" name="Lemail" id="Lemail" required>
+                    </div>
+                    <div>
+                        <label for="Lpassword">Password</label>
+                        <input type="password" name="Lpassword" id="Lpassword" required>
+                    </div>
+                    <button id="LsubmitBTN" type="button">Submit</button>
+                </form>    
+                 <p>Don't have an account yet? <a href="#" id="reghere">Register</a></p>
+
+            </div>
+       
+            <div id="registerBox">
+                <h2>Register</h2>
+            <form action="#">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div>
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" required>
+                </div>
+                <div>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div>
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" name="phoneNumber" id="phoneNumber" required>
+                </div>
+                <div>
+                    <label for="department">Select Department</label>
+                    <select id="departmentDropdown" name="department">
+                        <option value="">Select a Department</option>
+                        <option value="business">College of Business</option>
+                        <option value="comstud">College of Computer Studies</option>
+                        <option value="educ">College of Education</option>
+                        <option value="nursing">College of Nursing</option>
+                        <option value="humms">College of Humanities and Social Sciences </option>
+                        <option value="archi">College of Science, Engineering and Architecture</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="course">Select Course</label>
+                    <select id="courseDropdown" name="course" class="courses">
+                        <!-- Courses will be populated here based on department selection -->
+                    </select>
+                </div>
+                <button id="submitBTN" type="button">Submit</button>
+            </form>
+            <p>Already registered? <a href="#" id="loghere">Sign In</a></p>
+            </div>
+        
+            
+        </div>
+
+    </div>
+
+    <script type="module" src="/firebase.js"></script>
+    <script src="/departments.js"></script>
+    
+</body>
+</html>
