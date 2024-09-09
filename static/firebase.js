@@ -3,7 +3,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase
 import { getAuth, createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, setPersistence, 
   browserSessionPersistence, onAuthStateChanged,
-   signOut, inMemoryPersistence} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+   signOut, inMemoryPersistence, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 import { getFirestore, collection, addDoc  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 
@@ -139,21 +139,6 @@ LsubmitBTN.addEventListener('click', (e)=>{
 })
 
 
-
-setPersistence(auth, browserSessionPersistence)
-  .then(() => {
-    // Existing and future Auth states are now persisted in the current
-    // session only. Closing the window would clear any existing state even
-    // if a user forgets to sign out.
-    // ...
-    // New sign-in will be persisted with session persistence.
-    return signInWithEmailAndPassword(auth, email, password);
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
