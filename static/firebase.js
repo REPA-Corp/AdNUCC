@@ -3,7 +3,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase
 import { getAuth, createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, setPersistence, 
   browserSessionPersistence, onAuthStateChanged,
-   signOut,} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+   signOut, inMemoryPersistence} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 import { getFirestore, collection, addDoc  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 
@@ -168,6 +168,22 @@ setPersistence(auth, browserSessionPersistence)
         console.log("No user is signed in.");
     }
 });
+
+//Memory persistence
+
+setPersistence(auth, inMemoryPersistence)
+  .then(() => {
+    const provider = new GoogleAuthProvider();
+    // In memory persistence will be applied to the signed in Google user
+    // even though the persistence was set to 'none' and a page redirect
+    // occurred.
+    return signInWithRedirect(auth, provider);
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
 
 
 const logout = document.getElementById('signOut');
