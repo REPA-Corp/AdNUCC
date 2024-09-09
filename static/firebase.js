@@ -140,14 +140,13 @@ LsubmitBTN.addEventListener('click', (e)=>{
 
 
 
-setPersistence(auth, browserSessionPersistence)
+setPersistence(auth, inMemoryPersistence)
   .then(() => {
-    // Existing and future Auth states are now persisted in the current
-    // session only. Closing the window would clear any existing state even
-    // if a user forgets to sign out.
-    // ...
-    // New sign-in will be persisted with session persistence.
-    return signInWithEmailAndPassword(auth, email, password);
+    const provider = new GoogleAuthProvider();
+    // In memory persistence will be applied to the signed in Google user
+    // even though the persistence was set to 'none' and a page redirect
+    // occurred.
+    return signInWithRedirect(auth, provider);
   })
   .catch((error) => {
     // Handle Errors here.
