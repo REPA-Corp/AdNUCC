@@ -1,9 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, setPersistence, 
-  browserSessionPersistence, onAuthStateChanged,
-   signOut, inMemoryPersistence, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+  signInWithEmailAndPassword, onAuthStateChanged,
+   signOut  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 import { getFirestore, collection, addDoc  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 
@@ -28,7 +27,6 @@ auth.languageCode = 'en';
 
 
 
-const submitBTN = document.getElementById('submitBTN');
 
 async function addUser(data) {
   try {
@@ -40,103 +38,110 @@ async function addUser(data) {
   }
 }
 
-submitBTN.addEventListener('click', (e) =>{
+//login and reg
 
-    //getting the data
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    const username = document.getElementById('username').value;
+// const submitBTN = document.getElementById('submitBTN');
 
-    if(!(password == confirmPassword)){
-        alert("Password is not the same!");
-      return
-    }
 
-    const phoneNumber = document.getElementById('phoneNumber').value;
-    const departmentDropdown = document.getElementById('departmentDropdown').value;
-    const courseDropdown = document.getElementById('courseDropdown').value;
-    //---
+// submitBTN.addEventListener('click', (e) =>{
 
-console.log("MEMEMEMEMEMEL: ", departmentDropdown, " ", courseDropdown);
+//     //getting the data
+//     let email = document.getElementById('email').value;
+//     let password = document.getElementById('password').value;
+//     const confirmPassword = document.getElementById('confirmPassword').value;
+//     const username = document.getElementById('username').value;
 
-    createUserWithEmailAndPassword  (auth, email, password)
-    .then((userCredential) => {
-        alert("Registered succesfully");
-        window.location.href='/';
+//     if(!(password == confirmPassword)){
+//         alert("Password is not the same!");
+//       return
+//     }
 
-        // Signed up 
-        //add data for firestore
+//     const phoneNumber = document.getElementById('phoneNumber').value;
+//     const departmentDropdown = document.getElementById('departmentDropdown').value;
+//     const courseDropdown = document.getElementById('courseDropdown').value;
+//     //---
 
-        addUser({
-          email: email,
-          username: username,
-          phonenumber: phoneNumber,
-          department: departmentDropdown,
-          course: courseDropdown,
-        })
+//     createUserWithEmailAndPassword  (auth, email, password)
+//     .then((userCredential) => {
+//         alert("Registered succesfully");
+//         window.location.href='/';
+
+//         // Signed up 
+//         //add data for firestore
+
+//         addUser({
+//           email: email,
+//           username: username,
+//           phonenumber: phoneNumber,
+//           department: departmentDropdown,
+//           course: courseDropdown,
+//         })
          
 
-        const user = userCredential.user;
-        // email = email;
-        // password = password;
-        // ...
-        console.log(user);
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+//         const user = userCredential.user;
 
-        if (errorCode === 'auth/email-already-in-use') {
-            alert("Email already exists!");
-        } else {
-            alert(`Error: ${errorMessage}`);
-        }
-        // ..
-    });
+//         console.log(user);
+//     })
+//     .catch((error) => {
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
 
-})
+//         if (errorCode === 'auth/email-already-in-use') {
+//             alert("Email already exists!");
+//         } else {
+//             alert(`Error: ${errorMessage}`);
+//         }
+//         // ..
+//     });
+
+// })
 
 
 
 
 //login
-const LsubmitBTN = document.getElementById('LsubmitBTN');
-LsubmitBTN.addEventListener('click', (e)=>{
-  const email = document.getElementById('Lemail').value;
-   const password = document.getElementById('Lpassword').value;
-
-   if(password.length == 0){
-    alert("Password missing please try again");
-    return;
-   }
-
-    console.log(email, password);
-   signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user; 
-    alert('logged in successfully');
-    window.location.href='/'
-
-    // ...
+try{
+  const LsubmitBTN = document.getElementById('LsubmitBTN');
+  LsubmitBTN.addEventListener('click', (e)=>{
+    const email = document.getElementById('Lemail').value;
+     const password = document.getElementById('Lpassword').value;
+  
+     if(password.length == 0){
+      alert("Password missing please try again");
+      return;
+     }
+  
+      console.log(email, password);
+     signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user; 
+      alert('logged in successfully');
+      window.location.href='/departments';
+  
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+  
+      if(errorCode === 'auth/invalid-login-credentials'){
+          alert(errorMessage)
+      }else{
+          if(errorCode === 'auth/invalid-email'){
+            alert("Invalid Email pulease try again");
+          }else{
+            alert(errorMessage);
+          }
+      }
+      
+    });
   })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+}catch(err){
+  console.log(err);
+}
 
-    if(errorCode === 'auth/invalid-login-credentials'){
-        alert(errorMessage)
-    }else{
-        if(errorCode === 'auth/invalid-email'){
-          alert("Invalid Email pulease try again");
-        }else{
-          alert(errorMessage);
-        }
-    }
-    
-  });
-})
+
 
 
 
@@ -145,6 +150,7 @@ LsubmitBTN.addEventListener('click', (e)=>{
         // User is signed in, you can get their details
         const uid = user.uid;
         const token = user.accessToken;
+        console.log("TOKEEEBNNN: " ,token);
 
         //temp
   const namehere = document.getElementById('namehere').innerHTML = user.email ;
@@ -155,6 +161,8 @@ LsubmitBTN.addEventListener('click', (e)=>{
 });
 
 //Memory persistence
+
+
 
 
 const logout = document.getElementById('signOut');
