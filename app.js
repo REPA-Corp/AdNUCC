@@ -88,7 +88,6 @@ const assignRole = async (uid) =>{
 
 //handle REGISTRATION
 app.post('/reg', async(req,res)=>{
-    console.log("body body: ", req.body);
     data = req.body;
 
     if(data.password != data.confirmPassword){
@@ -115,7 +114,7 @@ app.post('/reg', async(req,res)=>{
           message: 'User created successfully',
           user: userRecord,
           status: 'passed',
-          redirect: '/departments'
+          redirect: '/'
         });
       } catch (error) {
 
