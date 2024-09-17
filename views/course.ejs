@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+
+    <h2 style="padding: 20px;"><%= collegeTitle %></h2>
+
+    <% let ctr = 0; %>
+    <div class="subjects-container">
+        <% subjects.forEach(e => { const subjectData = e.data() %>
+            <% if(subjectData.collegeList.includes(ids.id2)) {  ctr++;%>
+                <div class="subject-card">
+                    <a href="/departments/<%=ids.id1%>/<%=ids.id2%>/<%=subjectData.subjectCode%>">
+                        <h4><%= subjectData.subjectTitle %></h4>
+                        <h3><%= subjectData.subjectCode %></h3>
+                    </a>
+                </div>
+            <% } %>
+        <% }) %>
+    </div>
+
+    <% if(ctr == 0){ %>
+        <h3 style="text-align: center;">There are no subjects to show</h3>
+    <% } %> 
+
+
+    <script type="module" src="/firebase.js"></script>    
+</body>
+</html>

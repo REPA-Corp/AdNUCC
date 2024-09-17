@@ -1,10 +1,10 @@
 * {
-    /* margin: 0;
-    padding: 0; */
+    margin: 0;
+    padding: 0;
 }
 
 body{
-    background-color: wheat;
+    background-color: #D9D9D9;
 }
 
 
@@ -24,6 +24,10 @@ body{
 
 nav{
     display: flex;
+    background-color: #29398C;
+    color: white;
+    padding: 20px;
+
 }
 
 /* Full viewport height container */
@@ -38,6 +42,7 @@ nav{
 
 /* Left box containing forms and alert */
 #leftBox {
+    margin: 10px;
     background-color: #fff; /* White background */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -100,4 +105,73 @@ p a:hover {
     text-decoration: underline;
 }
 
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 50px;
+    padding: 40px;
+}
 
+.gallery-item {
+    background-color: #170761   ;
+    padding: 20px; 
+    border-radius: 20px;
+    transition: transform 0.3s, background-color 0.3s;
+    text-align: center;
+    height: 100px; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.gallery-item a {
+    text-decoration: none;
+    color: white;
+}
+
+.gallery-item:hover {
+    transform: scale(1.1);
+    background-color: rgb(54, 54, 54);
+}
+
+
+/* for course */
+
+.subjects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px; /* Space between the squares */
+    padding: 20px;
+  }
+
+  .subject-card {
+    background-color: #f4f4f4; /* Light background */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .subject-card h4, .subject-card h3 {
+    text-align: left;
+    color: #333;
+  }
+
+  .subject-card h4{
+    font-size: 15px;
+  }
+
+  .subject-card h3{
+    font-size: 40px;
+  }
+
+  .subject-card:hover {
+    transform: scale(1.05); /* Slightly grow the square on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  a {
+    text-decoration: none;
+  }

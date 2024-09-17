@@ -56,23 +56,6 @@ loghere.addEventListener('click', (e) => {
 
 
 //register
-const submitBTN = document.getElementById('submitBTN');
-
-submitBTN.addEventListener('click', (e) =>{
-
-    //getting the data
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    const username = document.getElementById('username').value;
-
-    const phoneNumber = document.getElementById('phoneNumber').value;
-    const departmentDropdown = document.getElementById('departmentDropdown').value;
-    const courseDropdown = document.getElementById('courseDropdown').value;
-    //---
-}) ;
-
-////regis
 function alertBox(data){
     const alertBox = document.getElementById('alertBox');
     console.log("HIIHI; ", data.status, data.status == 'error');

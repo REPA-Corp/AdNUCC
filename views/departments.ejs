@@ -6,11 +6,21 @@
 <body>
     <%- include('./partials/nav.ejs') %>
 
-    <% departmentsData.forEach(e => { data = e.data(); %>
-        <div style="padding: 5px; margin: 5px; background-color: red;">
-            <h2> <%= data.departmentName %></h2>
-        </div>
-   <% })  %>
+<h2 style="padding: 20px;">Departments</h2>
+
+    <div class="gallery">
+        <% departmentsData.forEach(e => { 
+             const data = e.data(); 
+        %>
+        <a href="/departments/<%= data.departmentId %>">
+
+          <div class="gallery-item">
+              <h2 style="color: white;" id="dept"><%= data.departmentName %></h2>
+          </div>
+        </a>
+
+        <% }) %>
+      </div>
 
 
     <script type="module" src="/firebase.js"></script>    

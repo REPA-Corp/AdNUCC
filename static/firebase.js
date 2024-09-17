@@ -101,8 +101,9 @@ async function addUser(data) {
 
 //login
 try{
-  const LsubmitBTN = document.getElementById('LsubmitBTN');
-  LsubmitBTN.addEventListener('click', (e)=>{
+  const log = document.getElementById('log').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+
     const email = document.getElementById('Lemail').value;
      const password = document.getElementById('Lpassword').value;
   
@@ -113,11 +114,24 @@ try{
   
       console.log(email, password);
      signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) =>  {
       // Signed in 
       const user = userCredential.user; 
-      alert('logged in successfully');
-      window.location.href='/departments';
+      // window.location.href='/departments';
+      const token =  await user.getIdToken();
+
+      await  fetch('/login', {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({token:token})
+        })
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+          window.location.href= res.redirect;
+        })
   
       // ...
     })
@@ -150,7 +164,6 @@ try{
         // User is signed in, you can get their details
         const uid = user.uid;
         const token = user.accessToken;
-        console.log("TOKEEEBNNN: " ,token);
 
         //temp
   const namehere = document.getElementById('namehere').innerHTML = user.email ;
