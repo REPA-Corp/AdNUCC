@@ -5,6 +5,9 @@
 
 <body>
     <%- include('./partials/nav.ejs') %>
+    <%- include('./partials/sidebar.ejs') %>
+
+    <section id="main-content">
 
     <h2 style="padding: 20px;"><%= collegeTitle %></h2>
 
@@ -25,6 +28,7 @@
     <% if(ctr == 0){ %>
         <h3 style="text-align: center;">There are no subjects to show</h3>
     <% } %> 
+    </section>
 
 
     <script type="module" src="/firebase.js"></script>    

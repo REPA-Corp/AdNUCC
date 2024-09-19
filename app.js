@@ -141,10 +141,10 @@ const verifyToken = async (req,res,next)=>{
   try{
     const decodedToken = await admin.auth().verifyIdToken(token);
 
-    req.body = decodedToken;
+    req.body = {...req.body,
+      ...decodedToken
 
-    console.log(decodedToken);
-
+    };
     next();
   }catch(err){
     console.log(err);
@@ -169,6 +169,10 @@ app.get('/protected',verifyToken, (req,res)=>{
 
 app.get('/', (req,res)=>{
     res.render('index', {pageTitle:'Home' });
+})
+
+app.get('/homepage', (req,res) => {
+  res.render('homepage', {pageTitle:'Home'})
 })
 
 
@@ -219,6 +223,7 @@ app.get('/departments/:id1/:id2', async(req,res)=>{
   }
 })
 
+//for subjects
 app.get('/departments/:id1/:id2/:id3', async(req,res)=>{
   const id1 = req.params.id1; 
   const id2 = req.params.id2;
@@ -229,14 +234,55 @@ app.get('/departments/:id1/:id2/:id3', async(req,res)=>{
     let subject = await db.collection('subjects').doc(id3).get();
 
     subject = subject.data();
-    console.log(subject);
 
-    // console.log(ids);
-    res.render('subject', {pageTitle: 'Subject', ids, subject })
+    const reviews = await db.collection('subjects').doc(id3).collection('reviews').get();
+
+    reviews.forEach(e => {
+        console.log(e.data().username);
+    });
+
+
+    res.render('subject', {pageTitle: 'Subject', ids, subject, reviews })
 
   }catch(err){
     console.log("Error getting the data", err);
   }
+})
+
+app.post('/reviews', verifyToken, async(req,res)=>{
+  console.log(req.body.course);
+  const course = req.body.course;
+
+  
+  let segments = req.body.email.split('@').filter(Boolean);
+  let username = segments[0].split('');
+
+  for(let i = 0 ; i < username.length; i++){
+    if(i>0 && i < (username.length-1)){
+      username[i]  = '*';
+    }
+  }
+  username = username.join('');
+
+  const ratings = {
+    comment: req.body.comment,  
+    rating: parseInt(req.body.rating, 10),  // Converts string to integer (base 10)
+    userId: req.body.uid,
+    username: username,             
+    timestamp: admin.firestore.FieldValue.serverTimestamp()  
+};
+
+try{
+  const docSnap = await db.collection('subjects').doc(course).collection('reviews').doc(`ratings${ratings.userId}`).set(ratings)
+  .then(console.log("Added the rating succesfully"))
+
+  res.status(201).json({message: "Reviewed Succesfully"});
+}catch(err){
+console.log("Error adding the rating", err);
+res.status(400).json({message: "Error Occured", error: err});
+
+}
+
 })
 
 app.use('/', (req,res)=>{

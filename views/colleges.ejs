@@ -5,7 +5,9 @@
 
 <body>
     <%- include('./partials/nav.ejs') %>
+    <%- include('./partials/sidebar.ejs') %>
 
+    <section id="main-content">
 
    <% deptName.forEach(e => { %>
       <% if(e.data().departmentId == deptID){   %>
@@ -28,6 +30,8 @@
      <%   } )       %>
 
       </div>
+
+    </section>
 
 
     <script type="module" src="/firebase.js"></script>    

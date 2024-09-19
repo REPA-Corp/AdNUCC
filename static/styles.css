@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -26,7 +29,7 @@ nav{
     display: flex;
     background-color: #29398C;
     color: white;
-    padding: 20px;
+    padding: 10px;
 
 }
 
@@ -43,6 +46,7 @@ nav{
 /* Left box containing forms and alert */
 #leftBox {
     margin: 10px;
+    margin-top: 50px;
     background-color: #fff; /* White background */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -53,17 +57,17 @@ nav{
 
 /* Alert box styling */
 #alertBox {
-    background-color: #f8d7da; /* Light red background */
-    color: #721c24; /* Dark red text */
+    background-color: #f8d7da; 
+    color: #721c24; 
     padding: 10px;
-    border: 1px solid #f5c6cb; /* Light red border */
+    border: 1px solid #f5c6cb; 
     border-radius: 4px;
-    margin-bottom: 20px; /* Space below the alert box */
+    margin-bottom: 20px; 
     text-align: center;
     display: none;
 }
 
-/* Common form styling */
+/* Common form styling// REGISTER&LOGIN */ 
 form div {
     margin-bottom: 15px;
     margin-right: 20px;
@@ -82,8 +86,8 @@ form input, form select {
 }
 
 button {
-    background-color: #007bff; /* Blue button background */
-    color: #fff; /* White text */
+    background-color: #007bff; 
+    color: #fff; 
     border: none;
     padding: 10px;
     border-radius: 4px;
@@ -92,7 +96,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; 
 }
 
 /* Styling for links */
@@ -175,3 +179,216 @@ p a:hover {
   a {
     text-decoration: none;
   }
+
+
+  .star{
+   color: rgb(255, 255, 255);
+  }
+
+  .star:hover{
+    color: gold;
+  }
+
+  .star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    font-size: 2em;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Change the color of stars when checked */
+.star-rating input:checked ~ label {
+    color: #f5b301;
+}
+
+/* Hover effect to preview rating */
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #f5b301;
+}
+
+/* stars */
+#subjectBox {
+    display: flex;
+    padding: 50px;
+    justify-content: space-between;
+}
+
+#rate-box {
+    padding: 20px;
+    color: white;
+    border-radius: 25px;
+    background-color: #29398C;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Background blur */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    padding: 100px;
+    width: 100%;
+    max-width: 1000px; /* Increased max-width */
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2em; /* Larger close button */
+    cursor: pointer;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    font-size: 5em; /* Larger star size */
+    margin: 20px 0;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Gold stars when selected */
+.star-rating input:checked + label,
+.star-rating input:checked + label ~ label {
+    color: #f5b301; /* Make selected stars gold */
+}
+
+/* Maintain gold color when hovering after rating */
+.star-rating input:checked ~ label:hover,
+.star-rating input:checked ~ label:hover ~ label {
+    color: #f5b301;
+}
+
+/* Hover preview */
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #f5b301;
+}
+
+/* Styled textarea */
+textarea {
+    width: 100%;
+    height: 120px; /* Increased height */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    resize: vertical;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+}
+
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#reviews {
+    display: flex;
+    padding: 20px;
+    gap: 20px; /* Adjusted to smaller gap for tighter spacing */
+}
+
+#reviewBox1 {
+    background-color: #ffffff;
+    border-radius:20px ;
+    padding: 20px;
+    color: rgb(8, 0, 62);
+    word-wrap: break-word; /* Ensure long names wrap properly */
+}
+
+#reviewBox2 {
+    flex-grow: 2; /* Allows more space for the comment */
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+
+.reviewStars{
+    display: flex;
+    cursor: pointer;
+}
+
+#reviewUSN{
+    margin-bottom: 10px;
+}
+
+#sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 50;
+    left: 0;
+    padding-top: 20px;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 50px;
+    padding-top: 60px;
+}
+
+#sidebar a {
+    margin-left: 0px;
+    
+    padding: 15px;
+    text-decoration: none;
+    font-size: 23px;
+    color: #78777E;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#sidebar a:hover {
+    color: white;
+    background-color: #29398C;
+    border-radius: 10px;
+}
+
+#main-content {
+    margin-left: 260px; /* Adjust to match the sidebar width */
+    padding: 20px;
+}
+
+#sidebar h2{
+    font-size: 20px;
+}

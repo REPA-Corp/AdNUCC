@@ -26,18 +26,6 @@ auth.languageCode = 'en';
 
 
 
-
-
-async function addUser(data) {
-  try {
-    // Add a new document with data to the "users" collection
-    const docRef = await addDoc(collection(db, "users"), data);
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
-
 //login and reg
 
 // const submitBTN = document.getElementById('submitBTN');
@@ -117,7 +105,6 @@ try{
     .then(async (userCredential) =>  {
       // Signed in 
       const user = userCredential.user; 
-      // window.location.href='/departments';
       const token =  await user.getIdToken();
 
       await  fetch('/login', {
@@ -132,8 +119,6 @@ try{
           console.log(res);
           window.location.href= res.redirect;
         })
-  
-      // ...
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -191,5 +176,73 @@ logout.addEventListener('click', (e) =>{
 })
 
 
+try{
+  const modal = document.getElementById('ratingModal').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const comment = document.getElementById('reviewTXT').value;
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+          // User is signed in, you can get their details
+          const uid = user.uid;
+          const token = user.accessToken;
+
+          const path = window.location.pathname;
 
 
+          const segments = path.split('/').filter(Boolean);
+          const course = segments[3]; 
+          console.log(course);
+
+          const reviewData = {rating,comment,token,course}
+
+          console.log(reviewData);
+
+
+          fetch('/reviews', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reviewData)
+          })
+          .then(res => res.json())
+          .then(res => {
+            window.location.reload();
+          })
+      } else {
+          // No user is signed in
+          console.log("No user is signed in.");
+      }
+  });
+
+
+})
+}catch(err){
+  console.log('Error in subjects ejs -- fetching data', err);
+}
+
+
+//for departments
+try{
+  const path = window.location.pathname;
+  console.log(path);
+  const home = document.getElementById('sideHome');
+  const sideDept = document.getElementById('sideDept');
+
+
+  if(path == '/homepage'){
+    home.style.backgroundColor= '#29398C';
+    home.style.borderRadius= '10px';
+    home.style.color= 'white';
+
+    
+  }else{
+    sideDept.style.backgroundColor= '#29398C';
+    sideDept.style.borderRadius= '10px';
+    sideDept.style.color= 'white';
+
+  }
+}catch(err){
+
+}
