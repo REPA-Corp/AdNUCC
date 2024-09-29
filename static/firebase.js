@@ -5,7 +5,6 @@ import { getAuth, createUserWithEmailAndPassword,
    signOut  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 import { getFirestore, collection, addDoc  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyB0niTxx_m8nXbtgIX4ge_YTssyoTr7-88",
   authDomain: "repa-corporation.firebaseapp.com",
@@ -106,6 +105,7 @@ try{
       // Signed in 
       const user = userCredential.user; 
       const token =  await user.getIdToken();
+      
 
       await  fetch('/login', {
           method: "POST",
@@ -142,14 +142,28 @@ try{
 
 
 
-
-
-  onAuthStateChanged(auth, (user) => {
+try{
+  onAuthStateChanged(auth, async(user) => {
     if (user) {
         // User is signed in, you can get their details
         const uid = user.uid;
-        const token = user.accessToken;
+      const token = await user.getIdToken(true);  // Wait for token to be ready
+        const path =  window.location.href;
 
+      try{
+        fetch(path, {
+          method:'GET',
+          headers: {
+            'authorization': `Bearer ${token}`,  // Send the token in the headers
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => res.json)
+        .then(console.log('GET FETCHED SUCCESSFULLY'))
+      }catch(err){
+        console.log('Error in fetch', err);
+      }
+    
         //temp
   const namehere = document.getElementById('namehere').innerHTML = user.email ;
     } else {
@@ -157,6 +171,11 @@ try{
         console.log("No user is signed in.");
     }
 });
+}catch(err){
+  console.log("error in Auth", err);
+}
+
+ 
 
 //Memory persistence
 

@@ -223,8 +223,11 @@ app.get('/departments/:id1/:id2', async(req,res)=>{
   }
 })
 
+let ctr = 1;
 //for subjects
 app.get('/departments/:id1/:id2/:id3', async(req,res)=>{
+  console.log(`Number of ${ctr} summons`);
+  ctr++;
   const id1 = req.params.id1; 
   const id2 = req.params.id2;
   const id3 = req.params.id3;
