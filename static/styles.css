@@ -565,6 +565,5 @@ textarea:focus {
     display: flex;
     justify-items: center;
     align-items: center;
-    background-color: black;
     width: 15%;
 }
