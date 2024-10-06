@@ -236,9 +236,9 @@ app.get('/departments/:id1/:id2/:id3', async(req,res)=>{
 
     const reviews = await db.collection('subjects').doc(id3).collection('reviews').get();
 
-    reviews.forEach(e => {
-        console.log(e.data().username);
-    });
+    // reviews.forEach(e => {
+    //     console.log(e.data().username);
+    // });
 
 
     res.render('subject', {pageTitle: 'Subject', ids, subject, reviews })
@@ -249,7 +249,6 @@ app.get('/departments/:id1/:id2/:id3', async(req,res)=>{
 })
 
 app.post('/reviews', verifyToken, async(req,res)=>{
-  console.log(req.body.course);
   const course = req.body.course;
 
   
@@ -263,6 +262,8 @@ app.post('/reviews', verifyToken, async(req,res)=>{
   }
   username = username.join('');
 
+  console.log("HAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+
   const ratings = {
     comment: req.body.comment,  
     rating: parseInt(req.body.rating, 10),  // Converts string to integer (base 10)
@@ -274,6 +275,35 @@ app.post('/reviews', verifyToken, async(req,res)=>{
 try{
   const docSnap = await db.collection('subjects').doc(course).collection('reviews').doc(`ratings${ratings.userId}`).set(ratings)
   .then(console.log("Added the rating succesfully"))
+
+
+  const sizeOfReviews = await db.collection('subjects').doc(course).collection('reviews').get();
+  const subjectData = await db.collection('subjects').doc(course).get();
+
+
+
+  let ratingSum = 0;
+  let revSize = sizeOfReviews.size
+
+  console.log(subjectData.data().numComments);
+  sizeOfReviews.forEach(e => {
+      const dta = e.data();
+
+      ratingSum += dta.rating;
+  })
+  let avg = ratingSum/revSize;
+
+
+  //changing the value of the numComments
+
+  await db.collection('subjects').doc(course).update({
+    numComments: revSize,
+    avgRating:  avg,
+})
+
+  console.log("DATA RAITINGS", ratingSum);
+
+
 
   res.status(201).json({message: "Reviewed Succesfully"});
 }catch(err){
