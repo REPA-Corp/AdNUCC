@@ -58,10 +58,9 @@ loghere.addEventListener('click', (e) => {
 //register
 function alertBox(data){
     const alertBox = document.getElementById('alertBox');
-    console.log("HIIHI; ", data.status, data.status == 'error');
 
     if(data.status == 'error'){
-        console.log("hello");
+        
         alertBox.style.display='block';
         alertBox.innerHTML = data.error;
 

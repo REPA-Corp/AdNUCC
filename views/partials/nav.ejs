@@ -1,17 +1,268 @@
+
 <nav style="display: flex; justify-content: space-between;">
-    <div style="display: flex; align-items: center;">
+    <div class="navTitle" style="display: flex; align-items: center;">
         <a href="/"><img src="/logo.png" alt="logo" width="100px" height="100px"></a>
         <h1>ADNU <span><br> Course Compass</span></h1>
     </div>
     <div id="logBox" >
         <div id="uLogged">
             <h1>Logged in account: <span id="namehere"></span></h1>
-            <button id="signOut">LOGOUT</button>
+            <button class="btn" id="signOut">LOGOUT</button>
         </div>
         <div id="uNotLogged">
-            <button onclick="window.location.href='auth'">Login</button>
+            <button class="btn loginBtn">Login</button>
+            <button class="btn signupBtn">Sign Up</button>
         </div>
       
     </div>
 
+    <div id="loginModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+            <form id="log">
+                <div id="loginBox">
+                    <img src="/logo.png" alt="logo" width="200px" height="200px">
+                    <p class="loginTitle">ADNU COURSE COMPASS</p>
+
+                    <input placeholder="Email" type="email" name="Lemail" id="Lemail" required>
+                    <div class="passBox">
+                        <input placeholder="Password" type="password" name="Lpassword" id="Lpassword" required>
+                        <i id="eye-Lpass" class="fas fa-eye"></i>
+                    </div>
+                    <button id="LsubmitBTN" type="submit">Submit</button>
+                    <p class="registerP">Don't have an account yet? <a href="#" id="reghere">Register</a></p>
+
+                </div>
+            </form>
+        </div>
+      
+    </div>
+
+
+    <div id="signUpModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div id="registerBox" style="margin: px;">
+            <img src="/logo.png" alt="logo" width="200px" height="200px">
+            <p class="loginTitle">ADNU COURSE COMPASS</p>
+            <p id="alertBox"></p>
+
+                <form id="regis">
+                    <div class="regisForm regisEmail">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="regisForm regisPass">
+                        <label for="password">Password</label>
+                        <div class="regPass1">
+                            <input type="password" name="password" id="password" required>
+                            <i id="eye-pass" class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="regisForm regisPass">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="regPass2">
+                            <input type="password" name="confirmPassword" id="confirmPassword" required>
+                            <i id="eye-Cpass" class="fas fa-eye"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="regisForm regisPhone">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="tel" name="phoneNumber" id="phoneNumber" required>
+                    </div>
+                    <div class="regisForm">
+                        <label for="department">Select Department</label>
+                        <select id="departmentDropdown" name="department">
+                            <option value="">Select a Department</option>
+                            <option value="business">College of Business</option>
+                            <option value="comstud">College of Computer Studies</option>
+                            <option value="educ">College of Education</option>
+                            <option value="nursing">College of Nursing</option>
+                            <option value="humms">College of Humanities and Social Sciences </option>
+                            <option value="archi">College of Science, Engineering and Architecture</option>
+                        </select>
+                    </div>
+                    <div class="regisForm">
+                        <label for="course">Select Course</label>
+                        <select id="courseDropdown" name="course" class="courses">
+                            <!-- Courses will be populated here based on department selection -->
+                        </select>
+                    </div>
+                    <button id="submitBTN" type="submit">Submit</button>
+                </form>
+     
+        </div>
+    
+        
+    </div>
+    </div>
+      
+    </div>
+
+
 </nav>
+
+<script>
+        // Get the modal
+        var loginModal = document.getElementById("loginModal");
+        var signupModal = document.getElementById("signUpModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementsByClassName("loginBtn")[0];
+        var btn2 = document.getElementsByClassName("signupBtn")[0];
+        var reghere = document.getElementById("reghere");
+
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        var span2 = document.getElementsByClassName("close")[1];
+
+        btn2.onclick = function(){
+            signupModal.style.display="block";
+        }
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+            loginModal.style.display = "block";
+        }
+
+        reghere.onclick = function(){
+            loginModal.style.display="none";
+            signupModal.style.display="block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            loginModal.style.display = "none";
+        }
+        span2.onclick=function(){
+            signupModal.style.display="none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = "none";
+            }
+            else if(event.target==signupModal){
+                signupModal.style.display="none";
+            }
+        }
+
+        document.getElementById('eye-Lpass').addEventListener('click', (e) => {
+            console.log('testsetset')
+            const Lpassword = document.getElementById('Lpassword');
+
+            let type = Lpassword.getAttribute('type') === 'password'? "text" : "password";
+            Lpassword.setAttribute('type', type);
+
+        })
+
+        document.getElementById('eye-pass').addEventListener('click', (e) => {
+            const pass = document.getElementById('password');
+            const type = pass.getAttribute('type') === 'password'? 'text' : 'password';
+            pass.setAttribute('type', type);
+
+        }) 
+
+        document.getElementById('eye-Cpass').addEventListener('click', (e) => {
+            const pass = document.getElementById('confirmPassword');
+
+            const type = pass.getAttribute('type') === 'password'? 'text': 'password';
+            pass.setAttribute('type', type)
+        })
+
+
+                
+        document.addEventListener('DOMContentLoaded', () => {
+        const departmentDropdown = document.getElementById('departmentDropdown');
+        const courseDropdown = document.getElementById('courseDropdown');
+
+        // Define course options for each department
+        const departmentCourses = {
+            'business': ['Bachelor of Business Administration (BBA)', 'Master of Business Administration (MBA)', 'Bachelor of Commerce (BCom)'],
+            'comstud': ['Bachelor of Science in Computer Science (BSCS)', 'Bachelor of Science in Information Technology (BSIT)', 'Bachelor of Science in Electronics and Communications Engineering (BSECE)'],
+            'educ': ['Bachelor of Education (BEd)', 'Master of Arts in Education (MAEd)', 'Master of Science in Education (MScEd)'],
+            'nursing': ['Bachelor of Science in Nursing (BSN)'],
+            'humms': ['Bachelor of Arts in Humanities (BA Humanities)'],
+            'archi': ['Bachelor of Science in Architecture (BS Arch)']
+        };
+        departmentDropdown.addEventListener('change', () => {
+            const selectedDepartment = departmentDropdown.value;
+            
+            // Clear existing courses
+            courseDropdown.innerHTML = '';
+
+            if (departmentCourses[selectedDepartment]) {
+                // Show and populate courses
+                courseDropdown.style.display = 'block';
+                
+                departmentCourses[selectedDepartment].forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course;
+                    option.textContent = course;
+                    courseDropdown.appendChild(option);
+                });
+            } else {
+                // Hide courses if no department is selected
+                courseDropdown.style.display = 'none';
+            }
+        });
+        });
+
+
+        
+document.getElementById('regis').addEventListener('submit', (e) =>{
+    e.preventDefault();
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const departmentDropdown = document.getElementById('departmentDropdown').value;
+    const courseDropdown = document.getElementById('courseDropdown').value;
+
+    const data = {email, password, confirmPassword, phoneNumber, departmentDropdown, courseDropdown};
+    fetch('/reg', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => { 
+        console.log("respond: ", res);
+        alertBox(res);
+        if(res.status == 'passed'){
+            setTimeout(() => {
+                window.location.href= res.redirect;
+            }, 1500);
+        }
+    })
+    
+    function alertBox(data){
+    const alertBox = document.getElementById('alertBox');
+
+    if(data.status == 'error'){
+        
+        alertBox.style.display='block';
+        alertBox.innerHTML = data.error;
+
+    }else{
+        alertBox.style.display='block';
+        alertBox.innerHTML = data.message;
+        alertBox.style.backgroundColor ='#cefad0'
+        alertBox.style.color ='#00631'
+        alertBox.style.border = 'border: 1px solid #00631';
+    }
+}
+  });
+
+
+</script>
+

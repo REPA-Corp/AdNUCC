@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 
 <%- include('./partials/head.ejs') %>
 
 <body>
     <%- include('./partials/nav.ejs') %>
-    <section id="main">
-        <%- include('./partials/sidebar.ejs') %>
+
+    <div class="homeContainer">
+
+
+
+        <section id="mainHome">
+        
+            <img src="/logo.png" alt="logo" width="300px" height="300px">
+            <h1>ADNU COURSE COMPASS</h1>
     
+            <div class="searchContainer">
+                <input type="text" id="searchSubjCode" placeholder="Subject Code">
+                <button id="searchBtn" class="searchCourseBtn">Search</button>
+            </div>
+            <div class="searchExtraContainer">
+       
+                <a class="searchBtnExtra searchCoursesBtn">Courses</a>
+                <a class="searchBtnExtra searchDepartmentsBtn" href="/departments">Departments</a>
+                
 
-    <section id="main-content">
-        <h2>Homepage</h2>
-    </section>
-    </section>
 
+            </div>
+        </section>
+    </div>
+
+    <div>
+        <%- include('./partials/footer.ejs') %>
+
+    </div>
     <script type="module" src="/firebase.js"></script>    
+
+    <script>
+         document.getElementById('searchBtn').addEventListener('click', (e) => {
+            var subjectcode = document.getElementById("searchSubjCode").value;
+            window.location.href= "/subject/"+subjectcode;
+
+        })
+
+       
+    </script>
 </body>
 </html>

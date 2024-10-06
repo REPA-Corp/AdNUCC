@@ -126,10 +126,6 @@ footer {
 }
 
 /* Common form styling// REGISTER&LOGIN */ 
-form div {
-    margin-bottom: 15px;
-    margin-right: 20px;
-}
 
 form label {
     display: block;
@@ -330,7 +326,7 @@ p a:hover {
     background-color: white;
     border-radius: 10px;
     padding: 100px;
-    width: 100%;
+    width: 250px;
     max-width: 1000px; /* Increased max-width */
     text-align: center;
     position: relative;
@@ -547,23 +543,294 @@ textarea:focus {
 /* for password */
 
 .passBox{
-    position: relative;
+    display: flex;
+    background-color: #d9d9d9;
+    border-radius: 25px;
+    width: 100%;
+    padding: 5px;
+    overflow: hidden;
+    align-items: center;
 }
 
 .passBox i{
-    position: absolute;
-    transform: translateY(50%);
-    top: 40%;
-    left: 95%;
-    font-size: 18px;
+
     color: #2E2E2E;
-    cursor: pointer;
 
 }
 
+.passBox input{
+    background: none;
+}
 #logBox{
     display: flex;
     justify-items: center;
     align-items: center;
-    width: 15%;
+    
+    
 }
+
+.navTitle > *{
+    font-family: "Oxygen"
+}
+.btn{
+    font-weight: 600;
+    width: 150px;
+    border-radius: 25px;
+}
+
+.btn.loginBtn{
+    color: black;
+    background-color:white;
+}
+
+.btn.signupBtn{
+    background-color: black;
+    color:white;
+}
+
+
+#signOut{
+    background-color: white;
+    color:black;
+}
+
+#uLogged{
+    align-items:center;
+    gap: 2rem;
+}
+#uLogged > h1{
+   font-family: "Oxygen";
+   font-size: 1rem;
+}
+
+#uNotLogged{
+    display: flex;
+    gap: 1rem;
+}
+
+.homeContainer{
+    display: flex;
+    
+}
+section#mainHome{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content:center;
+    gap: 1rem;
+
+}
+
+#mainHome>*{
+    font-family: "Oxygen"
+}
+
+#mainHome > h1{
+    color: #170761;
+
+}
+
+.searchExtraContainer{
+    display: flex;
+    gap: 1rem;
+}
+.searchContainer{
+    display: flex;
+
+}
+#searchSubjCode{
+    
+    border-radius: 5px 0 0 5px;
+    padding: 1rem;
+    width: 250px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+.searchCourseBtn{
+    border-radius: 0 5px 5px 0;
+    font-size: 12px; 
+    cursor: pointer;
+    color:white;
+    background-color: #29398C;
+}
+
+
+.searchBtnExtra{
+    font-size: 12px; 
+    cursor: pointer;
+    color:#29398C;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 350px; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #loginBox > *{
+    font-family: "Oxygen";
+    box-sizing: border-box;
+  }
+
+  p.loginTitle{
+    color: #170761;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Oxygen";
+  }
+
+  #loginBox{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    height: 500px;
+    justify-content: center;
+  }
+
+#Lemail{
+    background-color:#D9D9D9 !important;
+    padding: 10px;
+    width: 100%;
+    border-radius: 25px;
+    outline:none;
+    border: none;
+  }
+
+#Lpassword{
+    width: 100%;
+    border:none;
+    outline: none;
+
+}
+
+#LsubmitBTN{
+    width: 100%;
+    border-radius: 25px;
+    color:white;
+    font-size: .85rem;
+    background: #170761;
+
+}
+
+#regis > #submitBTN{
+    color:white;
+    background: #170761;
+}
+
+
+.registerP{
+    color: gray;
+    font-size:
+}
+
+
+#regis{
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: start;
+    box-sizing: border-box;
+    font-family: "Oxygen";
+    gap: 1rem;
+}
+#regis > *{
+    color: black;
+    font-family: "Oxygen";
+    box-sizing: border-box;
+}
+
+#regis > * > *{
+
+    box-sizing: border-box;
+}
+
+#regis > * > * > *{
+
+    box-sizing: border-box;
+}
+
+.regisForm > label{
+    text-align: start;
+}
+
+.regPass1 > input{
+    border:none;
+    outline: none;
+    border-radius: 2px;
+}
+
+
+.regPass2 > input{
+    border:none;
+    outline: none;
+    border-radius: 2px;
+}
+
+.regPass1, .regPass2{
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    display:flex;
+    align-items:center;
+}
+
+.regPass1 > i{
+    padding: 8px;
+}
+
+.regPass2 > i{
+    padding: 8px;
+}
+
+
+input#Lemail:-webkit-autofill,
+input#Lemail:-webkit-autofill:hover, 
+input#Lemail:-webkit-autofill:focus, 
+input#Lemail:-webkit-autofill:active{
+      border:none;
+    -webkit-box-shadow: 0 0 0 30px #d9d9d9 inset !important;
+}
+
+  input#Lpassword:-webkit-autofill,
+  input#Lpassword:-webkit-autofill:hover, 
+  input#Lpassword:-webkit-autofill:focus, 
+  input#Lpassword:-webkit-autofill:active{
+        border:none;
+      -webkit-box-shadow: 0 0 0 30px #d9d9d9 inset !important;
+  }

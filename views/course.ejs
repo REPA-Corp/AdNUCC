@@ -18,7 +18,7 @@
         <% subjects.forEach(e => { const subjectData = e.data() %>
             <% if(subjectData.collegeList.includes(ids.id2)) {  ctr++;%>
                 <div class="subject-card">
-                    <a style="display: flex; justify-content: space-between;" href="/departments/<%=ids.id1%>/<%=ids.id2%>/<%=subjectData.subjectCode%>">
+                    <a style="display: flex; justify-content: space-between;" href="/subject/<%=subjectData.subjectCode%>">
                         <% let avg = subjectData.avgRating.toFixed(1) %>
                         <div>
                         <!-- DYNAMICALLY post the data-overview of the subjects -->

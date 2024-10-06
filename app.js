@@ -88,7 +88,7 @@ const assignRole = async (uid) =>{
 //handle REGISTRATION
 app.post('/reg', async(req,res)=>{
     data = req.body;
-
+    console.log(data);
     if(data.password != data.confirmPassword){
       res.status(500).json({
         message: 'Error creating user',
@@ -171,6 +171,8 @@ app.get('/', (req,res) => {
 
 
 
+
+
 //for departments
 app.get('/departments', async(req,res)=>{
     // getting the departments data from the firestore
@@ -221,14 +223,13 @@ app.get('/departments/:id1/:id2', async(req,res)=>{
 
 let ctr = 1;
 //for subjects
-app.get('/departments/:id1/:id2/:id3', async(req,res)=>{
+app.get('/subject/:id3', async(req,res)=>{
   console.log(`Number of ${ctr} summons`);
   ctr++;
-  const id1 = req.params.id1; 
-  const id2 = req.params.id2;
+
   const id3 = req.params.id3;
   try{
-    const ids = {id1,id2,id3};
+
 
     let subject = await db.collection('subjects').doc(id3).get();
 
@@ -241,12 +242,16 @@ app.get('/departments/:id1/:id2/:id3', async(req,res)=>{
     // });
 
 
-    res.render('subject', {pageTitle: 'Subject', ids, subject, reviews })
+    res.render('subject', {pageTitle: 'Subject', subject, reviews })
 
   }catch(err){
     console.log("Error getting the data", err);
   }
 })
+
+
+
+
 
 app.post('/reviews', verifyToken, async(req,res)=>{
   const course = req.body.course;

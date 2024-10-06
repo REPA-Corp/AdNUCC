@@ -148,6 +148,7 @@ try{
     const uLogged = document.getElementById('uLogged')
 
 
+    
 
     if (user) {
         // User is signed in, you can get their details
@@ -170,14 +171,14 @@ try{
       }
     
         //temp
-  const namehere = document.getElementById('namehere').innerHTML = user.email ;
-  uLogged.style.display = 'block';
-  uNotLogged.style.display = 'none';
-    } else {
+        const namehere = document.getElementById('namehere').innerHTML = user.email ;
+        uLogged.style.display = 'flex';
+        uNotLogged.style.display = 'none';
+          } else {
         // No user is signed in
         console.log("No user is signed in.");
         uLogged.style.display = 'none';
-      uNotLogged.style.display = 'block';
+      uNotLogged.style.display = 'flex';
     }
 });
 }catch(err){
