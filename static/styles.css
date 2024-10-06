@@ -228,6 +228,7 @@ p a:hover {
   .subject-card h4, .subject-card h3 {
     text-align: left;
     color: #333;
+    font-family: "Oxygen"
   }
 
   .subject-card h4{

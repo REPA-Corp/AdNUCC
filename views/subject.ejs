@@ -94,7 +94,7 @@
     <% reviews.forEach(e => {  const reviewData = e.data()%> 
     <div id="reviews">
         <div id="reviewBox1">
-                <div id="reviewUSN">
+                <div id="reviewUSN" style="font-family: Oxygen">
                     <h2><%= reviewData.username %></h2>
                 </div>
                 <div>
@@ -136,7 +136,7 @@
         </div>
 
         <div id="reviewBox2">
-            <p><%= reviewData.comment %></p>
+            <p style="font-family: Oxygen"><%= reviewData.comment %></p>
             
         </div>
     </div>  
