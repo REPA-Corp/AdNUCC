@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
 <%- include('./partials/head.ejs') %>
 
 <body>
@@ -9,12 +12,15 @@
 
     <div id="wholeBox">
         <div id="rightBox">
-            <h1>Some contents here</h1>
+            <img src="/logo.png" alt="AdNUCC logo" style="height: 350px;">
+            <h2 style="text-align: center;">Welcome to 
+                <br>ADNU Course Compass!</h2>
+                <p>Discover what fellow students have to<br> say about your the courses being<br> offered by each department. </p>
         </div>
 
 
 
-        <div style="display: block;" id='leftBox'>
+        <div style="display: block; margin: 50px 0px;" id='leftBox'>
             <p id="alertBox">a</p>
 
             <div id="loginBox">
@@ -24,9 +30,12 @@
                         <label for="Lemail">Email</label>
                         <input type="email" name="Lemail" id="Lemail" required>
                     </div>
-                    <div>
+                    <div class="passBox">
                         <label for="Lpassword">Password</label>
                         <input type="password" name="Lpassword" id="Lpassword" required>
+                         <i id="eye-Lpass" class="fas fa-eye"></i>
+
+
                     </div>
                     <button id="LsubmitBTN" type="submit">Submit</button>
                 </form>    
@@ -34,7 +43,7 @@
 
             </div>
        
-            <div id="registerBox">
+            <div id="registerBox" style="margin: px;">
                 <h2>Register</h2>
 
             <form id="regis">
@@ -42,18 +51,18 @@
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" required>
                 </div>
-                <div>
+                <div class="passBox">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" required>
+                    <i id="eye-pass" class="fas fa-eye"></i>
                 </div>
-                <div>
+                <div class="passBox">
                     <label for="confirmPassword">Confirm Password</label>
                     <input type="password" name="confirmPassword" id="confirmPassword" required>
+                    <i id="eye-Cpass" class="fas fa-eye"></i>
+
                 </div>
-                <div>
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" required>
-                </div>
+
                 <div>
                     <label for="phoneNumber">Phone Number</label>
                     <input type="tel" name="phoneNumber" id="phoneNumber" required>
@@ -86,7 +95,6 @@
 
     </div>
 
-    <%- include('./partials/footer.ejs') %>
 
     <script type="module" src="/firebase.js"></script>
     <script src="/index.js"></script>

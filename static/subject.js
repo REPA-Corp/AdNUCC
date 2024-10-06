@@ -57,5 +57,8 @@ textarea.addEventListener('input', () => {
 
     }
 
-
 });
+
+let a= 0 ;
+a++;
+console.log('aaa', a);

@@ -80,12 +80,11 @@ const regis = document.getElementById('regis').addEventListener('submit', (e) =>
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-    const username = document.getElementById('username').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     const departmentDropdown = document.getElementById('departmentDropdown').value;
     const courseDropdown = document.getElementById('courseDropdown').value;
 
-    const data = {email, password, confirmPassword, username, phoneNumber, departmentDropdown, courseDropdown};
+    const data = {email, password, confirmPassword, phoneNumber, departmentDropdown, courseDropdown};
     fetch('/reg', {
         method:'POST',
         headers: {
@@ -106,3 +105,26 @@ const regis = document.getElementById('regis').addEventListener('submit', (e) =>
     
 
   });
+
+// for passwords
+  const eyeL = document.getElementById('eye-Lpass').addEventListener('click', (e) => {
+    const Lpassword = document.getElementById('Lpassword');
+
+    let type = Lpassword.getAttribute('type') === 'password'? "text" : "password";
+    Lpassword.setAttribute('type', type);
+
+  })
+
+  const eyeP = document.getElementById('eye-pass').addEventListener('click', (e) => {
+    const pass = document.getElementById('password');
+    const type = pass.getAttribute('type') === 'password'? 'text' : 'password';
+    pass.setAttribute('type', type);
+
+  }) 
+
+  const eyeC = document.getElementById('eye-Cpass').addEventListener('click', (e) => {
+    const pass = document.getElementById('confirmPassword');
+
+    const type = pass.getAttribute('type') === 'password'? 'text': 'password';
+    pass.setAttribute('type', type)
+  })

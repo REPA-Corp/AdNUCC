@@ -5,20 +5,20 @@
 
 <body>
     <%- include('./partials/nav.ejs') %>
-
+<section id="main-temp">
     <%- include('./partials/sidebar.ejs') %>
 
-    <section id="main-content">
+<section id="main-content">
     <div id="subjectBox" style="display: flex; padding: 50px; justify-content:space-between;">
-     <div>
+     <div id="subjectData">
                 <h2 ><%= subject.subjectCode %></h2>
                 <h3><%= subject.subjectTitle %></h3>
           
      </div>
         <div>
-            <div id="rate-box" style="padding: 20px; color: white; border-radius: 25px; background-color: #29398C;">Rate This Subject</div>
+            <div id="rate-box" ">Rate This Subject</div>
         </div>
-        <div></div>
+    
     </div>
      <!-- Modal -->
      <form id="ratingModal" class="modal">
@@ -28,7 +28,6 @@
                     <h1 style="text-align: center;">Rate this Subject</h1>
             </div>
          
-
             <div class="star-rating">
                 <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
                 <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
@@ -47,39 +46,38 @@
     </form>
 
     <div style="display: flex; justify-content: space-between;margin-right: 100px;">
-        <div>
-            <h2 style="margin: 20px 50px;"><%= reviews.size %> Reviews</h2>
+        <div id="reviewCount">
+            <h2><%= reviews.size %> Reviews</h2>
         </div>
         <div>
             <% let sum = 0 %>
             <% reviews.forEach(e => {  const reviewData = e.data()%> 
-                    <% console.log(e.data()) %>
                     <%  sum += reviewData.rating; %>
             
                 <%  }) %>
 
-                <% const avg = sum / reviews.size; %>
-                <h2><%= avg.toFixed(1) %></h2> <!-- Displays avg with 2 decimal places -->
-                
-                <h3>Overall Rating</h3>
+                <% let avg = sum / reviews.size; %>
+                <h2 id="avgRating"><%= avg.toFixed(1) %></h2> <!-- Displays avg with 2 decimal places -->
+                <% avg = parseInt(sum /  reviews.size); %>
+                <h3 id="avgTitle">Overall Rating</h3>
                 <% if(avg == 1){ %>
-                    <div class="reviewStars">
+                    <div class="avgStars" >
                         <h1 style="color: gold;">★</h1><h1>★★★★</h1>
                     </div>
                 <% } else if(avg == 2){ %>
-                    <div class="reviewStars">
+                    <div class="avgStars">
                         <h1 style="color: gold;">★★</h1><h1>★★★</h1>
                     </div>
                 <% } else if(avg == 3){ %>
-                    <div class="reviewStars">
+                    <div class="avgStars">
                         <h1 style="color: gold;">★★★</h1><h1>★★</h1>
                     </div>
                 <% } else if(avg == 4){ %>
-                    <div class="reviewStars">
+                    <div class="avgStars">
                         <h1 style="color: gold;">★★★★</h1><h1>★</h1>
                     </div>
                 <% } else { %>
-                    <div class="reviewStars">
+                    <div class="avgStars">
                         <h1 style="color: gold;">★★★★★</h1>
                     </div>
                 <% } %>
@@ -89,8 +87,9 @@
         </div>
     </div>
     
+    <div id="temp">
     <% if(reviews.empty) { %>
-        <h5>There are no reviews to show</h5> 
+        <h5 style="margin: 0px 60px; font-size: 15px;">There are no reviews to show</h5> 
    <% }%>
     <% reviews.forEach(e => {  const reviewData = e.data()%> 
     <div id="reviews">
@@ -145,9 +144,12 @@
 
     <%  }) %>
 </div>
+</div>
 
 </section>
+</section>
 
+    <%- include('./partials/footer.ejs') %>
     <script src="/subject.js"></script>    
 
     <script type="module" src="/firebase.js"></script>    

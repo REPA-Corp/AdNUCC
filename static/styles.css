@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +14,40 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 100%;
+    margin-top: -50px;
 }
+
+
+/* rightboxx */
+#rightBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#rightBox h2{
+    font-family: "Oxygen", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 45px;
+    color: #0B2353;
+}
+
+
+#rightBox p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #595656;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
 
 #leftBox{
     display: flex;
@@ -30,16 +62,42 @@ nav{
     background-color: #29398C;
     color: white;
     padding: 10px;
-
 }
+
+/* footer */
+html, body {
+    height: 100%; 
+    margin: 0; 
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out content */
+}
+
+main {
+    flex: 1; /* This will take up remaining space */
+    height: 100%;
+}
+
+
+
+footer {
+    background-color: #29398C;
+    padding: 50px;
+    color: white;
+}
+
+/* footer */
 
 /* Full viewport height container */
 #container {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-height: 100vh; /* Full viewport height */
-    background-color: #f0f0f0; /* Optional: Background color */
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh; 
+    background-color: #f0f0f0; 
     padding: 20px;
 }
 
@@ -47,12 +105,12 @@ nav{
 #leftBox {
     margin: 10px;
     margin-top: 50px;
-    background-color: #fff; /* White background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     padding: 20px;
     width: 100%;
-    max-width: 400px; /* Max width for responsiveness */
+    max-width: 400px; 
 }
 
 /* Alert box styling */
@@ -114,6 +172,11 @@ p a:hover {
     grid-template-columns: repeat(2, 1fr); 
     gap: 50px;
     padding: 40px;
+
+    font-family: "Oxygen", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+
 }
 
 .gallery-item {
@@ -126,6 +189,7 @@ p a:hover {
     display: flex; 
     flex-direction: column;
     justify-content: center; 
+
 }
 
 .gallery-item a {
@@ -136,6 +200,13 @@ p a:hover {
 .gallery-item:hover {
     transform: scale(1.1);
     background-color: rgb(54, 54, 54);
+}
+
+#galleryTitle{
+   padding: 20px;
+   font-family: "Oxygen", sans-serif;
+   font-weight: 700;
+   font-style: normal;
 }
 
 
@@ -222,6 +293,8 @@ p a:hover {
     display: flex;
     padding: 50px;
     justify-content: space-between;
+    margin-bottom: -50px;
+
 }
 
 #rate-box {
@@ -231,6 +304,12 @@ p a:hover {
     background-color: #29398C;
     cursor: pointer;
     text-align: center;
+    font-size: 20px;
+    margin: 20px 40px;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 /* Modal styles */
@@ -261,9 +340,11 @@ p a:hover {
     position: absolute;
     top: 15px;
     right: 15px;
-    font-size: 2em; /* Larger close button */
+    font-size: 2em; 
     cursor: pointer;
 }
+
+
 
 .star-rating {
     display: flex;
@@ -304,7 +385,7 @@ p a:hover {
 /* Styled textarea */
 textarea {
     width: 100%;
-    height: 120px; /* Increased height */
+    height: 120px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -324,7 +405,7 @@ textarea:focus {
 #reviews {
     display: flex;
     padding: 20px;
-    gap: 20px; /* Adjusted to smaller gap for tighter spacing */
+    gap: 20px; 
 }
 
 #reviewBox1 {
@@ -332,21 +413,30 @@ textarea:focus {
     border-radius:20px ;
     padding: 20px;
     color: rgb(8, 0, 62);
-    word-wrap: break-word; /* Ensure long names wrap properly */
+    word-wrap: break-word;
 }
 
 #reviewBox2 {
-    flex-grow: 2; /* Allows more space for the comment */
+    flex-grow: 2; 
     padding: 10px;
     background-color: #ffffff;
     border-radius: 20px;
 }
 
 
-.reviewStars{
+.reviewStars, .avgStars{
     display: flex;
     cursor: pointer;
 }
+
+.reviewStars h1{
+    font-size: 30px;
+}
+
+.avgStars{
+    font-size: 30px;
+}
+
 
 #reviewUSN{
     margin-bottom: 10px;
@@ -355,7 +445,6 @@ textarea:focus {
 #sidebar {
     height: 100%;
     width: 200px;
-    position: fixed;
     top: 50;
     left: 0;
     padding-top: 20px;
@@ -385,10 +474,96 @@ textarea:focus {
 }
 
 #main-content {
-    margin-left: 260px; /* Adjust to match the sidebar width */
+    width: 100%;
     padding: 20px;
 }
 
 #sidebar h2{
     font-size: 20px;
+}
+
+/* for reviews */
+
+#avgRating{
+    font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 50px;
+}
+
+#avgTitle{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 25px;
+    color: #595656;
+}
+
+#subjectData{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+#subjectData h2{
+    font-size: 45px;
+}
+
+#subjectData h3{
+    font-size: 25;
+    color: #595656;
+}
+
+#reviewCount{
+    margin: 20px 50px; 
+    margin-top: 120px; 
+    font-size: 20px; 
+    color: #2E2E2E;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+#main{
+    display: flex;
+
+    /* Temporary */
+    height: 100%;
+}
+
+#main-temp{
+    display: flex;
+
+    /* Temporary */
+}
+
+/* another gallery css */
+
+#galleryTitle{
+    font-size: 35px;
+}
+
+
+/* for password */
+
+.passBox{
+    position: relative;
+}
+
+.passBox i{
+    position: absolute;
+    transform: translateY(50%);
+    top: 40%;
+    left: 95%;
+    font-size: 18px;
+    color: #2E2E2E;
+    cursor: pointer;
+
+}
+
+#logBox{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 15%;
 }
