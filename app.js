@@ -12,8 +12,7 @@ app.use(express.json());
 
 admin.initializeApp({
     credential: admin.credential.applicationDefault(),
-    // or use a service account key file: 
-    credential: admin.credential.cert(require('./pkey/repa-corporation-firebase-adminsdk-ub9ct-3ddd6b939a.json'))
+    credential: admin.credential.cert(require('./pkey/repa-corporation-firebase-adminsdk-ub9ct-3da6a0904e.json'))
   });
 
 
@@ -162,16 +161,11 @@ app.get('/protected',verifyToken, (req,res)=>{
   res.status(200).json({message: "Authorized person only"});
 })
 
-// app.get('/protected', verifyToken, (req,res)=>{
-// })
-
-
-
-app.get('/', (req,res)=>{
-    res.render('index', {pageTitle:'Home' });
+app.get('/auth', (req,res)=>{
+    res.render('index', {pageTitle:'Auth' });
 })
 
-app.get('/homepage', (req,res) => {
+app.get('/', (req,res) => {
   res.render('homepage', {pageTitle:'Home'})
 })
 
@@ -179,8 +173,9 @@ app.get('/homepage', (req,res) => {
 
 //for departments
 app.get('/departments', async(req,res)=>{
-
+    // getting the departments data from the firestore
     const departmentsData = await db.collection('departments').get();
+    // then sending it to the frontend
     res.render('departments', {pageTitle: 'Departments', departmentsData });
 })
 
@@ -201,21 +196,22 @@ app.get('/departments/:id', async(req,res)=>{
 
 //for Colleges
 app.get('/departments/:id1/:id2', async(req,res)=>{
+  //getting the current website link
   const id1 = req.params.id1; 
   const id2 = req.params.id2;
   try{
-
+    //fetching it
     const ids = {id1,id2};
 
     console.log(ids.id1);
 
-
+    //then using it to target the "current data " from a specific collection on the firestore
     const docSnap = await db.collection('departments').doc(id1).collection('colleges').doc(id2).get();
 
     const collegeTitle = docSnap.data().collegeTitle;
 
     const subjects = await db.collection('subjects').get();
-
+    // sending it to the frontend 
     res.render('course', {pageTitle: 'Course', collegeTitle: collegeTitle,ids , subjects: subjects})
 
   }catch(err){

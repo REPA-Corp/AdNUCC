@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +14,40 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 100%;
+    margin-top: -50px;
 }
+
+
+/* rightboxx */
+#rightBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#rightBox h2{
+    font-family: "Oxygen", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 45px;
+    color: #0B2353;
+}
+
+
+#rightBox p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #595656;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
 
 #leftBox{
     display: flex;
@@ -30,13 +62,12 @@ nav{
     background-color: #29398C;
     color: white;
     padding: 10px;
-
 }
 
 /* footer */
 html, body {
-    height: 100%; /* Ensure body takes full height */
-    margin: 0; /* Remove default margin */
+    height: 100%; 
+    margin: 0; 
 }
 
 body {
@@ -63,10 +94,10 @@ footer {
 /* Full viewport height container */
 #container {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-height: 100vh; /* Full viewport height */
-    background-color: #f0f0f0; /* Optional: Background color */
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh; 
+    background-color: #f0f0f0; 
     padding: 20px;
 }
 
@@ -74,12 +105,12 @@ footer {
 #leftBox {
     margin: 10px;
     margin-top: 50px;
-    background-color: #fff; /* White background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     padding: 20px;
     width: 100%;
-    max-width: 400px; /* Max width for responsiveness */
+    max-width: 400px; 
 }
 
 /* Alert box styling */
@@ -313,6 +344,8 @@ p a:hover {
     cursor: pointer;
 }
 
+
+
 .star-rating {
     display: flex;
     flex-direction: row-reverse;
@@ -508,4 +541,30 @@ textarea:focus {
 
 #galleryTitle{
     font-size: 35px;
+}
+
+
+/* for password */
+
+.passBox{
+    position: relative;
+}
+
+.passBox i{
+    position: absolute;
+    transform: translateY(50%);
+    top: 40%;
+    left: 95%;
+    font-size: 18px;
+    color: #2E2E2E;
+    cursor: pointer;
+
+}
+
+#logBox{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    background-color: black;
+    width: 15%;
 }

@@ -14,16 +14,19 @@
     
     <% let ctr = 0; %>
     <div class="subjects-container">
+        <!-- fetch the data needed for i  -->
         <% subjects.forEach(e => { const subjectData = e.data() %>
             <% if(subjectData.collegeList.includes(ids.id2)) {  ctr++;%>
                 <div class="subject-card">
                     <a style="display: flex; justify-content: space-between;" href="/departments/<%=ids.id1%>/<%=ids.id2%>/<%=subjectData.subjectCode%>">
                         <% let avg = subjectData.avgRating.toFixed(1) %>
                         <div>
-
+                        <!-- DYNAMICALLY post the data-overview of the subjects -->
                         <h4><%= subjectData.subjectTitle %></h4>
                         <h3><%= subjectData.subjectCode %></h3>
                         <% avg = subjectData.avgRating.toFixed(0) %>
+
+                        <!-- for the star design -->
                         <% if(avg == 1){ %>
                             <div class="avgStars" >
                                 <h1 style="color: gold;">★</h1><h1>★★★★</h1>

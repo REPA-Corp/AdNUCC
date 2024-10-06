@@ -144,6 +144,11 @@ try{
 
 try{
   onAuthStateChanged(auth, async(user) => {
+    const uNotLogged = document.getElementById('uNotLogged');
+    const uLogged = document.getElementById('uLogged')
+
+
+
     if (user) {
         // User is signed in, you can get their details
         const uid = user.uid;
@@ -166,9 +171,13 @@ try{
     
         //temp
   const namehere = document.getElementById('namehere').innerHTML = user.email ;
+  uLogged.style.display = 'block';
+  uNotLogged.style.display = 'none';
     } else {
         // No user is signed in
         console.log("No user is signed in.");
+        uLogged.style.display = 'none';
+      uNotLogged.style.display = 'block';
     }
 });
 }catch(err){
@@ -250,7 +259,7 @@ try{
   const sideDept = document.getElementById('sideDept');
 
 
-  if(path == '/homepage'){
+  if(path == '/'){
     home.style.backgroundColor= '#29398C';
     home.style.borderRadius= '10px';
     home.style.color= 'white';
