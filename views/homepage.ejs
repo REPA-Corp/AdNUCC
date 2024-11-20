@@ -8,25 +8,18 @@
     <%- include('./partials/nav.ejs') %>
 
     <div class="homeContainer">
-
-
-
         <section id="mainHome">
         
             <img src="/logo.png" alt="logo" width="300px" height="300px">
             <h1>ADNU COURSE COMPASS</h1>
-    
+
             <div class="searchContainer">
                 <input type="text" id="searchSubjCode" placeholder="Subject Code">
                 <button id="searchBtn" class="searchCourseBtn">Search</button>
             </div>
             <div class="searchExtraContainer">
-       
                 <a class="searchBtnExtra searchCoursesBtn">Courses</a>
                 <a class="searchBtnExtra searchDepartmentsBtn" href="/departments">Departments</a>
-                
-
-
             </div>
         </section>
     </div>
@@ -43,7 +36,6 @@
             window.location.href= "/subject/"+subjectcode;
 
         })
-
        
     </script>
 </body>
