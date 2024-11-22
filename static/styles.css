@@ -84,9 +84,15 @@ main {
 
 
 footer {
+    display: flex;
+    justify-content: space-between;
     background-color: #29398C;
     padding: 50px;
     color: white;
+}
+
+.footer-content{
+    max-width: 35%;
 }
 
 /* footer */
@@ -312,6 +318,16 @@ p a:hover {
     font-style: normal;
 }
 
+#rate-box-div h1{
+    font-family: "Poppins", sans-serif;
+    color: rgb(115, 0, 0);
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+    margin-right: 20px;
+    margin-top: 50px;
+}
+
 /* Modal styles */
 .modal {
     display: none;
@@ -442,7 +458,14 @@ textarea:focus {
     margin-bottom: 10px;
 }
 
+#reviewUSN img{
+
+}
+
 #sidebar {
+    display: flex;
+    flex-direction: column;
+
     height: 100%;
     width: 200px;
     top: 50;
@@ -456,6 +479,9 @@ textarea:focus {
     padding-top: 60px;
 }
 
+
+
+
 #sidebar a {
     margin-left: 0px;
     
@@ -466,6 +492,14 @@ textarea:focus {
     display: block;
     margin-bottom: 10px;
 }
+
+#sidebar span{
+    text-align: right;
+    cursor: pointer;
+    transform: scaleY(1.2);
+    transition: all 1s ease;
+}
+
 
 #sidebar a:hover {
     color: white;

@@ -31,15 +31,15 @@ document.querySelectorAll('.star-rating input').forEach(input => {
         rating = e.target.value;
         console.log(`User rated: ${rating} stars`);
         switch(rating){
-            case '1': emoticons.innerHTML = "Very Unsatisfied😡<img style='height: 30%;width: 30%;' src='/images/pat2.png'>"; 
+            case '1': emoticons.innerHTML = "Very Unsatisfied😡"; 
             break;
-            case '2' : emoticons.innerHTML = "Unsatisfied😔 <img style='height: 30%;width: 30%;' src='/images/ana.png'>"
+            case '2' : emoticons.innerHTML = "Unsatisfied😔"
             break;
-            case '3' : emoticons.innerHTML = "Neutral😐 <img style='height: 60%;width: 60%;' src='/images/ana2.png'>"
+            case '3' : emoticons.innerHTML = "Neutral😐"
             break;
-            case '4' : emoticons.innerHTML = "Satisfied😆<img style='height: 30%;width: 30%;' src='/images/pat.png'>"
+            case '4' : emoticons.innerHTML = "Satisfied😆"
             break;
-            case '5' : emoticons.innerHTML = "Very Satisfied <img style='height: 60%;width: 60%;' src='/images/isa.png'>"
+            case '5' : emoticons.innerHTML = "Very Satisfied"
             break;
         }
     });

@@ -15,8 +15,8 @@
                 <h3><%= subject.subjectTitle %></h3>
           
      </div>
-        <div>
-            <div id="rate-box" ">Rate This Subject</div>
+        <div id="rate-box-div">
+            <div id="rate-box">Rate This Subject</div>
         </div>
     
     </div>
@@ -95,6 +95,8 @@
     <div id="reviews">
         <div id="reviewBox1">
                 <div id="reviewUSN">
+                    <img src="https://www.gravatar.com/avatar?d=mp&size=200" alt="Anonymous Avatar" style="border-radius: 50%; max-width: 50px;">
+
                     <h2><%= reviewData.username %></h2>
                 </div>
                 <div>
@@ -137,7 +139,15 @@
 
         <div id="reviewBox2">
             <p><%= reviewData.comment %></p>
-            
+            <span style="display: flex; text-align: end; justify-content: flex-end; margin-top: 10%; color:#888">Posted at: 
+                <% 
+                    const fullTimestamp = reviewData.timestamp.toDate(); 
+                    const datePart = fullTimestamp.toDateString();
+                    const timePart = fullTimestamp.toLocaleTimeString(); 
+                %>
+                <%= timePart %>, <%= datePart %> 
+            </span>
+                       
         </div>
     </div>  
 
@@ -148,6 +158,7 @@
 
 </section>
 </section>
+
 
     <%- include('./partials/footer.ejs') %>
     <script src="/subject.js"></script>    

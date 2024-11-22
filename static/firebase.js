@@ -3,7 +3,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase
 import { getAuth, createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, onAuthStateChanged,
    signOut  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-import { getFirestore, collection, addDoc  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDoc, doc  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB0niTxx_m8nXbtgIX4ge_YTssyoTr7-88",
@@ -149,12 +149,73 @@ try{
 
 
 
+
     if (user) {
         // User is signed in, you can get their details
         const uid = user.uid;
       const token = await user.getIdToken(true);  // Wait for token to be ready
-        const path =  window.location.href;
+      const path =  window.location.href;
+      const pathFiltering =  window.location.href;
+      console.log("ASDSADAS: " ,  pathFiltering);
 
+      const parts = pathFiltering.split('/');
+      const course = parts[6]; // 'BSCS'
+      console.log("AAAA", course);
+
+
+      // Fetch the document
+              try {
+                // Reference to the document
+                const docRefFiltering = doc(db, 'subjects', course);
+
+                // Fetch the document
+                const docSnap = await getDoc(docRefFiltering);
+                console.log("SDADSAFGK", docSnap.data());
+                if (docSnap.exists()) {
+                  const collegeList = docSnap.data().collegeList;
+                    console.log("Document qweqweqwewqeqwewqeqw:", docSnap.data());
+                    console.log('DSADSA', collegeList);
+
+              // Getting a specific document using its UID
+              const docRef = doc(db, "users", user.uid); // Reference to the document
+              getDoc(docRef).then((docSnap) => {
+                if (docSnap.exists()) {
+                  console.log("Document data:", docSnap.data());
+                  const data = docSnap.data();
+                                try{
+                                  console.log('ASDJIDJSAIODSJAOIDSA', data.courseAbbr);
+                                  if(!collegeList.includes(data.courseAbbr)){
+                                    const rateBoxDiv = document.getElementById('rate-box-div');
+
+                                    // Hide the #rate-box and replace it with an <h1>
+                                    const rateBox = document.getElementById('rate-box');
+                                    rateBox.style.display = 'none'; // Hide the rate-box
+                                
+                                    const newHeading = document.createElement('h1');
+                                    newHeading.textContent = 'You cannot rate this subject';
+                                    newHeading.style.textAlign = 'center'; // Optional: For text alignment
+                                    rateBoxDiv.appendChild(newHeading);
+                                  }else{
+                                    console.log("The SAME");
+                                  }
+                                }catch(err){
+                                  console.log("ERROR IN FILTERING");
+                                }
+                              } else {
+                                console.log("No such document!");
+                              }
+                    }).catch((error) => {
+                      console.error("Error fetching document:", error);
+                    });
+
+            
+          } else {
+            console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching document:", error);
+      }
+      
       try{
         fetch(path, {
           method:'GET',
@@ -178,6 +239,10 @@ try{
         console.log("No user is signed in.");
         uLogged.style.display = 'none';
       uNotLogged.style.display = 'block';
+
+      const rateBox = document.getElementById('rate-box');
+      rateBox.style.display='none';
+
     }
 });
 }catch(err){
@@ -205,6 +270,8 @@ logout.addEventListener('click', (e) =>{
 
 
 try{
+
+
   const modal = document.getElementById('ratingModal').addEventListener('submit', (e)=>{
     e.preventDefault();
     const comment = document.getElementById('reviewTXT').value;
@@ -238,6 +305,9 @@ try{
           .then(res => {
             window.location.reload();
           })
+
+
+          
       } else {
           // No user is signed in
           console.log("No user is signed in.");
@@ -273,5 +343,22 @@ try{
   }
 }catch(err){
 
+}
+
+try{
+  const windowID = window.location.pathname;
+  const goBackBtn = document.getElementById('go-back-btn');
+
+  if(windowID == '/'){
+    goBackBtn.style.display ='none';
+  }
+
+  
+  goBackBtn.addEventListener('click', (e) =>{
+      history.back();
+  })
+
+}catch(err){
+  console.log("Error in go-back-button");
 }
 
