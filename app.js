@@ -12,7 +12,7 @@ app.use(express.json());
 
 admin.initializeApp({
     credential: admin.credential.applicationDefault(),
-    credential: admin.credential.cert(require('./pkey/repa-corporation-firebase-adminsdk-ub9ct-3da6a0904e.json'))
+    credential: admin.credential.cert(require('./pkey/repa-corporation-firebase-adminsdk-ub9ct-2b192b66ab.json'))
   });
 
 
@@ -88,6 +88,7 @@ const assignRole = async (uid) =>{
 //handle REGISTRATION
 app.post('/reg', async(req,res)=>{
     data = req.body;
+    console.log("MEOW: ", data);
 
     if(data.password != data.confirmPassword){
       res.status(500).json({
@@ -105,6 +106,38 @@ app.post('/reg', async(req,res)=>{
           password: data.password
         });
 
+        console.log('UDIDUDUDUD: ',userRecord.uid);
+
+        // temp ---------------------
+
+        const courseDropdown = data.courseDropdown;
+
+        // Use a regular expression to find the text inside parentheses
+        const courseCode = courseDropdown.match(/\(([^)]+)\)/);
+        
+        // Extracted course code is inside courseCode[1]
+        const result = courseCode ? courseCode[1] : null; // Check if match was found
+        
+        console.log("THISISIT: ", result); // Output: "BS Arch"
+
+        // temp ---------------------
+        const docRef = db.collection('users').doc(userRecord.uid);
+
+        docRef.set({
+          email: data.email,
+          phonenumber: data.phoneNumber,
+          department: data.departmentDropdown,
+          course: data.courseDropdown,
+          courseAbbr: result,
+          UID:userRecord.uid,
+        })
+        .then((docRef) => {
+          console.log('Document written with ID: ', docRef.id); // Logs the auto-generated document ID
+        }).catch((error) => {
+          console.error('Error adding document: ', error);
+        });
+
+
 
         assignRole(userRecord.uid);
 
@@ -113,7 +146,7 @@ app.post('/reg', async(req,res)=>{
           message: 'User created successfully',
           user: userRecord,
           status: 'passed',
-          redirect: '/'
+          redirect: '/auth'
         });
       } catch (error) {
 
@@ -223,6 +256,7 @@ let ctr = 1;
 //for subjects
 app.get('/departments/:id1/:id2/:id3', async(req,res)=>{
   console.log(`Number of ${ctr} summons`);
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
   ctr++;
   const id1 = req.params.id1; 
   const id2 = req.params.id2;
@@ -232,13 +266,10 @@ app.get('/departments/:id1/:id2/:id3', async(req,res)=>{
 
     let subject = await db.collection('subjects').doc(id3).get();
 
+
     subject = subject.data();
 
     const reviews = await db.collection('subjects').doc(id3).collection('reviews').get();
-
-    reviews.forEach(e => {
-        console.log(e.data().username);
-    });
 
 
     res.render('subject', {pageTitle: 'Subject', ids, subject, reviews })

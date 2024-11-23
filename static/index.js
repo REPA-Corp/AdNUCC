@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Define course options for each department
   const departmentCourses = {
-    'business': ['Bachelor of Business Administration (BBA)', 'Master of Business Administration (MBA)', 'Bachelor of Commerce (BCom)'],
-    'comstud': ['Bachelor of Science in Computer Science (BSCS)', 'Bachelor of Science in Information Technology (BSIT)', 'Bachelor of Science in Electronics and Communications Engineering (BSECE)'],
-    'educ': ['Bachelor of Education (BEd)', 'Master of Arts in Education (MAEd)', 'Master of Science in Education (MScEd)'],
-    'nursing': ['Bachelor of Science in Nursing (BSN)'],
-    'humms': ['Bachelor of Arts in Humanities (BA Humanities)'],
-    'archi': ['Bachelor of Science in Architecture (BS Arch)']
+    'College of Business': ['Bachelor of Business Administration (BBA)', 'Master of Business Administration (MBA)', 'Bachelor of Commerce (BCom)'],
+    'College of Computer Studies': ['Bachelor of Science in Computer Science (BSCS)', 'Bachelor of Science in Information Technology (BSIT)', 'Bachelor of Science in Electronics and Communications Engineering (BSECE)'],
+    'College of Education': ['Bachelor of Education (BEd)', 'Master of Arts in Education (MAEd)', 'Master of Science in Education (MScEd)'],
+    'College of Nursing': ['Bachelor of Science in Nursing (BSN)'],
+    'College of Humanities and Social Sciences': ['Bachelor of Arts in Humanities (BAHumanities)'],
+    'College of Science, Engineering and Architecture': ['Bachelor of Science in Architecture (BSArch)']
 };
   departmentDropdown.addEventListener('change', () => {
       const selectedDepartment = departmentDropdown.value;
