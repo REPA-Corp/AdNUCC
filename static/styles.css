@@ -52,6 +52,7 @@ body{
 #leftBox{
     display: flex;
     justify-content: center;
+    
     align-items: center;
     background-color: rgb(255, 255, 255);
     padding: 10px;
@@ -109,6 +110,8 @@ footer {
 
 /* Left box containing forms and alert */
 #leftBox {
+    display:flex;
+    flex-direction: column;
     margin: 10px;
     margin-top: 50px;
     background-color: #fff; 
