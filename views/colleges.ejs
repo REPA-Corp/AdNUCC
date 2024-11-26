@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <%- include('./partials/head.ejs') %>
 
 <body>
     <%- include('./partials/nav.ejs') %>
     <section id="main">
-      <%- include('./partials/sidebar.ejs') %>
+
           <section id="main-content">
 
         <% deptName.forEach(e => { %>
             <% if(e.data().departmentId == deptID){   %>
-              <h2  id="galleryTitle"><%= e.data().departmentName%></h2>
+            
+              <h2  id="galleryTitle"><span id="go-back-btn"><i class="fa fa-arrow-left fa-xs" aria-hidden="true" style="padding:10px"></i></span>
+<%= e.data().departmentName%></h2>
+              <p style="padding:0px 20px; color: gray;">Select your preffered Program</p>
           <% }})%>
 
           <div class="gallery">

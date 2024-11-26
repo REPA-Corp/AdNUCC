@@ -6,25 +6,25 @@
 
 <%- include('./partials/head.ejs') %>
 
-<body>
+<body style="background-color:#hsl(219, 65%, 92%);">
 
     <%- include('./partials/nav.ejs') %>
 
     <div id="wholeBox">
         <div id="rightBox">
-            <img src="/logo.png" alt="AdNUCC logo" style="height: 350px;">
+            <img src="/logo.png" alt="AdNUCC logo" style="height: 200px;">
             <h2 style="text-align: center;">Welcome to 
                 <br>ADNU Course Compass!</h2>
-                <p>Discover what fellow students have to<br> say about your the courses being<br> offered by each department. </p>
+                <p>Discover what fellow students have to say about your <br>the courses being offered by each department. </p>
         </div>
 
 
 
-        <div style="display: block; margin: 50px 0px;" id='leftBox'>
+        <div id='leftBox'>
             <p id="alertBox">a</p>
 
-            <div id="loginBox">
-                <h2>Login</h2>
+            <div id="loginBox" section="loginB">
+                <h2 class = "logintitle">Login</h2>
                 <form id="log">
                     <div>
                         <label for="Lemail">Email</label>
@@ -37,14 +37,14 @@
 
 
                     </div>
-                    <button id="LsubmitBTN" type="submit">Submit</button>
+                    <button id="LsubmitBTN" type="submit">Sign In</button>
                 </form>    
                  <p>Don't have an account yet? <a href="#" id="reghere">Register</a></p>
 
             </div>
        
             <div id="registerBox" style="margin: px;">
-                <h2>Register</h2>
+                <h2 class="logintitle">Register</h2>
 
             <form id="regis">
                 <div>
@@ -62,11 +62,6 @@
                     <i id="eye-Cpass" class="fas fa-eye"></i>
 
                 </div>
-
-                <div>
-                    <label for="phoneNumber">Phone Number</label>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" required>
-                </div>
                 <div>
                     <label for="department">Select Department</label>
                     <select id="departmentDropdown" name="department">
@@ -82,12 +77,13 @@
                 <div>
                     <label for="course">Select Course</label>
                     <select id="courseDropdown" name="course" class="courses">
+                    <optionvalue="">Select a Course</option>
                         <!-- Courses will be populated here based on department selection -->
                     </select>
                 </div>
-                <button id="submitBTN" type="submit">Submit</button>
+                <button id="signupBTN" type="submit">Submit</button>
             </form>
-            <p>Already registered? <a href="#" id="loghere">Sign In</a></p>
+                <p style = "text-align:center">Already registered? <a href="#" id="loghere">Sign In</a></p>
             </div>
         
             
@@ -95,7 +91,8 @@
 
     </div>
 
-
+    
+    <%- include('./partials/footer.ejs') %>
     <script type="module" src="/firebase.js"></script>
     <script src="/index.js"></script>
     

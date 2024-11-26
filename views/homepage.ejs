@@ -1,21 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+    <%- include('./partials/head.ejs') %>
 
-<%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
 
-<body>
-    <%- include('./partials/nav.ejs') %>
-    <section id="main">
-        <%- include('./partials/sidebar.ejs') %>
-    
+        <div class="homeContainer" >
+            <img src="/logo.png" alt="logo" width="500px" height="500px">
+            
+            <div class="explore-content">
+            
+                <h1>ADNU Course Compass:</h1>
+                <p>Pointing You Toward Excellence</p>
+                <button onclick="window.location.href='/departments'" href="#" class="button" style="--clr: #7808d0">
+                <span class="button__icon-wrapper">
+                    <svg
+                    viewBox="0 0 14 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="button__icon-svg"
+                    width="10"
+                    >
+                    <path
+                        d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                        fill="currentColor"
+                    ></path>
+                    </svg>
 
-    <section id="main-content">
-        <h2>Homepage</h2>
-    </section>
-    </section>
+                    <svg
+                    viewBox="0 0 14 15"
+                    fill="none"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="button__icon-svg button__icon-svg--copy"
+                    >
+                    <path
+                        d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                        fill="currentColor"
+                    ></path>
+                    </svg>
+                </span>
+                Explore
+                </button>
 
-    <%- include('./partials/footer') %>
+            </div>
 
-    <script type="module" src="/firebase.js"></script>    
-</body>
+        </div>
+
+        <div class="aboutContainer">
+            <h1>About Us</h1>
+            <p>Our project aims to develop a local version of the RMP website for Ateneo de Naga University (AdNU), but unlike RMP, our platform will allow students to rate the courses offered by each college, rather than the professors. This approach fosters a respectful and constructive environment while providing students with valuable insights into the course content, structure, and delivery.</p>
+        </div>
+
+        <%- include('./partials/footer.ejs') %>
+
+        <script type="module" src="/firebase.js"></script>    
+        <script>
+            document.getElementById('searchBtn').addEventListener('click', (e) => {
+                var subjectcode = document.getElementById("searchSubjCode").value;
+                window.location.href= "/subject/"+subjectcode;
+
+            })
+        </script>
+    </body>
 </html>

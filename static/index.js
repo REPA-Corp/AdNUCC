@@ -80,11 +80,10 @@ const regis = document.getElementById('regis').addEventListener('submit', (e) =>
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-    const phoneNumber = document.getElementById('phoneNumber').value;
     const departmentDropdown = document.getElementById('departmentDropdown').value;
     const courseDropdown = document.getElementById('courseDropdown').value;
 
-    const data = {email, password, confirmPassword, phoneNumber, departmentDropdown, courseDropdown};
+    const data = {email, password, confirmPassword, departmentDropdown, courseDropdown};
     fetch('/reg', {
         method:'POST',
         headers: {

@@ -1,17 +1,25 @@
-<nav style="display: flex; justify-content: space-between;">
-    <div style="display: flex; align-items: center;">
-        <a href="/"><img src="/logo.png" alt="logo" width="100px" height="100px"></a>
-        <h1>ADNU <span><br> Course Compass</span></h1>
-    </div>
-    <div id="logBox" >
-        <div id="uLogged">
-            <h1>Logged in account: <span id="namehere"></span></h1>
-            <button id="signOut">LOGOUT</button>
-        </div>
-        <div id="uNotLogged">
-            <button onclick="window.location.href='/auth'">Login</button>
-        </div>
-      
+<nav class="header">
+    <div id="leftCont" onclick="window.location.href='/'">
+        <img id="logo" src="/logo.png" alt="logo" width="50px" height="50px">
+        <h1 id="adnucc">ADNU Course Compass</h1>
     </div>
 
+    <div id="navLinks">
+        <a class="navigation-link" href="/">Home</a>
+        <a class="navigation-link" href="/departments">Departments</a>
+    </div>
+
+    <div id="logBox" >
+        <p><span id="namehere"></span></p>
+
+        <div id="uLogged">
+            <button id="signOut" class="button" style="--clr: #7808d0">Log Out</button>
+        </div>
+
+        <div id="uNotLogged">
+            <button onclick="window.location.href='/auth'" href="#" class="button" style="--clr: #7808d0">
+                Log In
+            </button>
+        </div>
+    </div>
 </nav>
