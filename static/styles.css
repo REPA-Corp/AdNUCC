@@ -228,6 +228,8 @@ body {
 
 /* Left box containing forms and alert */
 #leftBox {
+    display:flex;
+    flex-direction: column;
     margin: 10px;
     margin-top: 50px;
     border-radius: 8px; 
@@ -960,6 +962,7 @@ section#mainHome{
     margin-right: auto;
     padding-left: 50px;
     gap: 2.5rem;
+    color: white;
 }
 
 .navigation-link{
