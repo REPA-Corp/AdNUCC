@@ -601,3 +601,7 @@ textarea:focus {
     align-items: center;
     width: 15%;
 }
+
+.navigation-link{
+    color: white;
+}
