@@ -39,7 +39,7 @@ document.querySelectorAll('.star-rating input').forEach(input => {
             break;
             case '4' : emoticons.innerHTML = "Satisfied😆"
             break;
-            case '5' : emoticons.innerHTML = "Very Satisfied"
+            case '5' : emoticons.innerHTML = "Very Satisfied😁"
             break;
         }
     });

@@ -67,12 +67,12 @@ body {
 
 .homeContainer h1 {
     font-weight: bolder;
-    color: #1C2B78;
+    color: white;
     font-size: 45px;
 }
 
 .homeContainer p {
-    color: #1C2B78;
+    color: white;
     font-size: 20px;
 }
 
@@ -1009,15 +1009,19 @@ section#mainHome{
     transform: scale(1.1);
     width: 100%;
     height: 100%;
-    z-index: -1;
-    background-image: url(/adnubg4.jpg);
-    background-position: center bottom;
+    z-index: -2;
+    background-image: url(/ignatius.jpg);
+    background-position: center top;
 }
 
 .tanga  {
     margin-top: 20px;
     background-color: #29398C;
 }
-
-
-
+.overlaysapic {
+    position: absolute;
+    background: linear-gradient(to top, rgba(0, 0, 0), rgb(0 0 0 / 32%), rgba(0, 0, 0, 20.8%), rgba(0, 0, 0, 0%));
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
