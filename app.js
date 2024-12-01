@@ -12,7 +12,7 @@ app.use(express.json());
 
 admin.initializeApp({
     credential: admin.credential.applicationDefault(),
-    credential: admin.credential.cert(require('./pkey/repa-corporation-firebase-adminsdk-ub9ct-2b192b66ab.json'))
+    credential: admin.credential.cert(require('./pkey/repa-corporation-firebase-adminsdk-ub9ct-b71c6edf38.json'))
   });
 
 
@@ -125,7 +125,6 @@ app.post('/reg', async(req,res)=>{
 
         docRef.set({
           email: data.email,
-          phonenumber: data.phoneNumber,
           department: data.departmentDropdown,
           course: data.courseDropdown,
           courseAbbr: result,

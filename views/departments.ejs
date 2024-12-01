@@ -8,12 +8,13 @@
     <!-- reuse the nav dynamically -->
     <%- include('./partials/nav.ejs') %>
     <section id="main">
-        <%- include('./partials/sidebar.ejs') %>
+
                 <section id="main-content">
 
                     <!-- posting the departments dynamically -->
-            <h2  id="galleryTitle">Departments</h2>
-
+                        
+               <h2  id="galleryTitle">Departments</h2>
+                <p style="padding:0px 20px; color: gray;">Select your preferred Department</p>
                 <div class="gallery">
                     <% departmentsData.forEach(e => { 
                         const data = e.data(); 
@@ -30,10 +31,12 @@
             </section>
     </section>
     <div>
-        <%- include('./partials/footer.ejs') %>
+        
 
     </div>
 
     <script type="module" src="/firebase.js"></script>    
 </body>
+
+<%- include('./partials/footer.ejs') %>
 </html>

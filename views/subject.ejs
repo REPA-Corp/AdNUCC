@@ -1,20 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <%- include('./partials/head.ejs') %>
 
 <body>
     <%- include('./partials/nav.ejs') %>
 <section id="main-temp">
-    <%- include('./partials/sidebar.ejs') %>
+
 
 <section id="main-content">
-    <div id="subjectBox" style="display: flex; padding: 50px; justify-content:space-between;">
-     <div id="subjectData">
-                <h2 ><%= subject.subjectCode %></h2>
-                <h3><%= subject.subjectTitle %></h3>
-          
-     </div>
+    <div id="subjectBox" style="display: flex; padding: 50px 50px 0 50px ; justify-content:space-between;">
+
+    <div style="display:flex; gap: 20px;">
+        <span id="go-back-btn" style="display:flex; align-items:center;"><i class="fa fa-arrow-left fa-xl" aria-hidden="true" style="padding:10px"></i></span>
+         <div id="subjectData">
+        
+                    <h2 style="display:flex; gap: 12px; align-items:center">
+                    <%= subject.subjectCode %>
+                        <% let sum = 0 %>
+                        <% reviews.forEach(e => {  const reviewData = e.data()%> 
+                            <%  sum += reviewData.rating; %>
+                        <%  }) %>
+
+                        <% let avg = sum / reviews.size; %>
+
+                        <div style="display:flex; align-items:center; font-size: 24px;"> 
+                            
+                            <h2 id="avgRating" style="font-size: 24px; margin-right: 12px; font-weight: normal">(<%= avg.toFixed(1) %></h2> <!-- Displays avg with 2 decimal places -->
+                            <% avg = parseInt(sum /  reviews.size); %>
+                            
+                            <% if(avg == 1){ %>
+                                <div class="avgStars" >
+                                    <h1 style="color: gold;">★</h1><h1 style="color:gray;">★★★★</h1>
+                                </div>
+                            <% } else if(avg == 2){ %>
+                                <div class="avgStars">
+                                    <h1 style="color: gold;">★★</h1><h1 style="color:gray;">★★★</h1>
+                                </div>
+                            <% } else if(avg == 3){ %>
+                                <div class="avgStars">
+                                    <h1 style="color: gold;">★★★</h1><h1 style="color:gray;">★★</h1>
+                                </div>
+                            <% } else if(avg == 4){ %>
+                                <div class="avgStars">
+                                    <h1 style="color: gold;">★★★★</h1><h1 style="color:gray;">★</h1>
+                                </div>
+                            <% } else { %>
+                                <div class="avgStars">
+                                    <h1 style="color: gold;">★★★★★</h1>
+                                </div>
+                                
+                            <% } %>
+                            <span style="font-size:24px; font-family: 'Oxygen'; font-weight: normal">)</span>
+                        </div>
+                
+                    </h2>
+                    <h3><%= subject.subjectTitle %></h3>
+        
+         </div>
+    </div>
         <div id="rate-box-div">
             <div id="rate-box">Rate This Subject</div>
         </div>
@@ -41,49 +86,14 @@
             <h3 style="text-align: left;">Review</h3>
             <textarea minlength="10" maxlength="1000"  name="reviewTXT" id="reviewTXT" required></textarea>
             <p>Characters: <span id="charCount">0</span>/1000</p>
-            <button type="submit">Submit</button>
+            <button class="tanga" type="submit">Submit</button>
         </div>
     </form>
 
-    <div style="display: flex; justify-content: space-between;margin-right: 100px;">
-        <div id="reviewCount">
-            <h2><%= reviews.size %> Reviews</h2>
-        </div>
-        <div>
-            <% let sum = 0 %>
-            <% reviews.forEach(e => {  const reviewData = e.data()%> 
-                    <%  sum += reviewData.rating; %>
-            
-                <%  }) %>
+    <div style="display: flex; justify-content: space-between; border-bottom:2px solid gainsboro; padding: 20px 50px">
 
-                <% let avg = sum / reviews.size; %>
-                <h2 id="avgRating"><%= avg.toFixed(1) %></h2> <!-- Displays avg with 2 decimal places -->
-                <% avg = parseInt(sum /  reviews.size); %>
-                <h3 id="avgTitle">Overall Rating</h3>
-                <% if(avg == 1){ %>
-                    <div class="avgStars" >
-                        <h1 style="color: gold;">★</h1><h1>★★★★</h1>
-                    </div>
-                <% } else if(avg == 2){ %>
-                    <div class="avgStars">
-                        <h1 style="color: gold;">★★</h1><h1>★★★</h1>
-                    </div>
-                <% } else if(avg == 3){ %>
-                    <div class="avgStars">
-                        <h1 style="color: gold;">★★★</h1><h1>★★</h1>
-                    </div>
-                <% } else if(avg == 4){ %>
-                    <div class="avgStars">
-                        <h1 style="color: gold;">★★★★</h1><h1>★</h1>
-                    </div>
-                <% } else { %>
-                    <div class="avgStars">
-                        <h1 style="color: gold;">★★★★★</h1>
-                    </div>
-                <% } %>
-                
-                
-                
+         <div id="reviewCount">
+            <h2><%= reviews.size %> Reviews</h2>
         </div>
     </div>
     
@@ -139,7 +149,7 @@
 
         <div id="reviewBox2">
             <p><%= reviewData.comment %></p>
-            <span style="display: flex; text-align: end; justify-content: flex-end; margin-top: 10%; color:#888">Posted at: 
+            <span style="display: flex; text-align: end; justify-content: flex-end; margin-top: auto; color:#888">Posted at: 
                 <% 
                     const fullTimestamp = reviewData.timestamp.toDate(); 
                     const datePart = fullTimestamp.toDateString();

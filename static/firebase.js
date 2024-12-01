@@ -231,7 +231,7 @@ try{
       }
     
         //temp
-  const namehere = document.getElementById('namehere').innerHTML = user.email ;
+  const namehere = document.getElementById('namehere').innerHTML =  user.email ;
   uLogged.style.display = 'block';
   uNotLogged.style.display = 'none';
     } else {
