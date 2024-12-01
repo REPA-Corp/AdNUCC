@@ -59,6 +59,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
     align-items: center;
     padding: 50px;
     position:relative;
@@ -925,6 +926,7 @@ section#mainHome{
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 10px;
 }
 
@@ -1016,3 +1018,6 @@ section#mainHome{
     margin-top: 20px;
     background-color: #29398C;
 }
+
+
+
