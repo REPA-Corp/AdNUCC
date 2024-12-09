@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Define course options for each department
   const departmentCourses = {
     'College of Business': ['Bachelor of Business Administration (BBA)', 'Master of Business Administration (MBA)', 'Bachelor of Commerce (BCom)'],
-    'College of Computer Studies': ['Bachelor of Science in Computer Science (BSCS)', 'Bachelor of Science in Information Technology (BSIT)', 'Bachelor of Science in Electronics and Communications Engineering (BSECE)'],
+    'College of Computer Studies': ['Bachelor of Science in Computer Science (BSCS)', 'Bachelor of Science in Information Technology (BSIT)', 'Bachelor of Science in Electronics and Communications Engineering (BSECE)', 'Bachelor of Science in Information Systems (BSIS)'],
     'College of Education': ['Bachelor of Education (BEd)', 'Master of Arts in Education (MAEd)', 'Master of Science in Education (MScEd)'],
     'College of Nursing': ['Bachelor of Science in Nursing (BSN)'],
     'College of Humanities and Social Sciences': ['Bachelor of Arts in Humanities (BAHumanities)'],
