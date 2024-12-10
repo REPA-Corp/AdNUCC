@@ -232,6 +232,7 @@ try{
     
         //temp
   const namehere = document.getElementById('namehere').innerHTML =  user.email ;
+  console.log("ASDSADSADAS", user.course)
   uLogged.style.display = 'block';
   uNotLogged.style.display = 'none';
     } else {
@@ -362,3 +363,42 @@ try{
   console.log("Error in go-back-button");
 }
 
+//for breacrumbs
+try{
+  const breadCrumbs = document.getElementById('breadCrumbs');
+  const path = window.location.pathname;
+  const segments = path.split('/').filter(Boolean);
+
+  let breadcrumbs = [];
+  let currentPath = "";
+  const pathSpecific = path.split('/').filter(Boolean);
+
+console.log('disoadjsoaisdjiao', pathSpecific[0]);
+  // Construct breadcrumb paths incrementally
+  segments.forEach(segment => {
+      currentPath += `/${segment}`;
+      breadcrumbs.push(currentPath);
+  });
+  
+  console.log(breadcrumbs);
+  console.log(`${breadcrumbs[1]} hi there ${breadcrumbs[2]}`);
+  console.log('hello there' , window.location.pathname);
+  console.log("SIZEE", breadcrumbs.length);
+  let bcSize = breadcrumbs.length;
+  switch(bcSize){
+    case 1: 
+  breadCrumbs.innerHTML += `<a href=${breadcrumbs[0]}>Departments</a> </a>`
+    break;
+    case 2:
+  breadCrumbs.innerHTML += `<a href=${breadcrumbs[0]}>Departments</a>  <i class="fa fa-chevron-right fa-xs"></i> <a href=${breadcrumbs[1]}> ${pathSpecific[1]} </a> `
+    break;
+    case 3:
+  breadCrumbs.innerHTML += `<a href=${breadcrumbs[0]}>Departments</a>  <i class="fa fa-chevron-right fa-xs"></i> <a href=${breadcrumbs[1]}> ${pathSpecific[1]} </a> <i class="fa fa-chevron-right fa-xs"></i> <a href=${breadcrumbs[2]}> ${pathSpecific[2]} </a>`
+    break;
+    case 4:
+  breadCrumbs.innerHTML += `<a href=${breadcrumbs[0]}>Departments</a>  <i class="fa fa-chevron-right fa-xs"></i> <a href=${breadcrumbs[1]}> ${pathSpecific[1]} </a> <i class="fa fa-chevron-right fa-xs"></i> <a href=${breadcrumbs[2]}> ${pathSpecific[2]} </a> <i class="fa fa-chevron-right fa-xs"></i> <a href=${breadcrumbs[3]}> ${pathSpecific[3]} </a>`
+    break;
+  }
+}catch(err){
+  console.log("Error in breadcrumbs: ", err);
+}

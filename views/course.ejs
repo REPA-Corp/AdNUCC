@@ -9,9 +9,10 @@
       
     
     <section id="main-content">
-
-    <p style="padding: 0px 20px;"><a class="navlink" href="/departments">Departments</a> <i class="fa fa-chevron-right fa-xs"></i> <span style="text-transform: uppercase"><%= ids.id1 %></span></a></p>
+    <p id="breadCrumbs" style="padding: 0px 20px;"></p>
     <h2  id="galleryTitle"><span id="go-back-btn"><i class="fa fa-arrow-left fa-xs" aria-hidden="true" style="padding:15px; color:#29398C"></i></span><%= collegeTitle %></h2>
+    <p style="padding:0px 100px; margin: 0px 40px; margin-bottom: 10px;  color: #4c5580; font-size: 20px;"> <%= collegeDesc %>  </p>
+    <hr style="margin: 20px 50px;"> 
     <p style="padding:0px 20px; color: gray;">Select your preferred Subject</p>
     <% let ctr = 0; %>
     <div class="subjects-container">

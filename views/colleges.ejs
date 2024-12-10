@@ -8,19 +8,23 @@
     <section id="main">
 
           <section id="main-content">
+            <p id="breadCrumbs" style="padding: 0px 20px;"></p>
 
         <% deptName.forEach(e => { %>
             <% if(e.data().departmentId == deptID){   %>
             
               <h2  id="galleryTitle"><span id="go-back-btn"><i class="fa fa-arrow-left fa-xs" aria-hidden="true" style="padding:10px"></i></span>
 <%= e.data().departmentName%></h2>
+
+<p style="padding:0px 100px; margin: 0px 40px; margin-bottom: 10px;  color: #4c5580; font-size: 20px;"><%= e.data().departmentDesc %>  </p>
+
               <p style="padding:0px 20px; color: gray;">Select your preferred Program</p>
           <% }})%>
 
           <div class="gallery">
 
             <% collegeData.forEach(e => { infoData = e.data()%>
-              <a href="/departments/<%= deptID %>/<%=infoData.collegeID%> "  >
+              <a href="/departments/<%= deptID %>/<%= infoData.collegeID %> "  >
 
                 <div class="gallery-item">
                     <h2 style="color: white;" id="dept"><%= infoData.collegeTitle %></h2>

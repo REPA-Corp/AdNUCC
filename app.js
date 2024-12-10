@@ -241,10 +241,11 @@ app.get('/departments/:id1/:id2', async(req,res)=>{
     const docSnap = await db.collection('departments').doc(id1).collection('colleges').doc(id2).get();
 
     const collegeTitle = docSnap.data().collegeTitle;
+    const collegeDesc = docSnap.data().collegeDesc;
 
     const subjects = await db.collection('subjects').get();
     // sending it to the frontend 
-    res.render('course', {pageTitle: 'Course', collegeTitle: collegeTitle,ids , subjects: subjects})
+    res.render('course', {pageTitle: 'Course', collegeTitle: collegeTitle,ids , subjects: subjects, collegeDesc: collegeDesc})
 
   }catch(err){
     console.log("Error getting the data", err);
@@ -304,6 +305,32 @@ app.post('/reviews', verifyToken, async(req,res)=>{
 try{
   const docSnap = await db.collection('subjects').doc(course).collection('reviews').doc(`ratings${ratings.userId}`).set(ratings)
   .then(console.log("Added the rating succesfully"))
+
+  //updating the fields
+  const snapshotReviews = await db.collection('subjects').doc(course).collection('reviews').get();
+  let numComment = 0;
+  let sum = 0;
+  snapshotReviews.forEach(doc => {
+   sum += doc.data().rating;
+   numComment++;
+    console.log(doc.id, '=>', doc.data())
+  });
+
+  const snapshot = await db.collection('subjects').doc(course).get();
+
+  console.log("GDSKLGJSDKLGD", snapshot.data());
+
+  // if (!snapshot.exists) {
+  //     console.log('No such document!');
+  // } else {
+  //     const sData= snapshot.data()
+
+      (await db.collection('subjects').doc(course)).update({
+        avgRating: sum/numComment,
+        numComments: numComment
+      }).then("Successfully updated the DB")
+  // }
+  
 
   res.status(201).json({message: "Reviewed Succesfully"});
 }catch(err){
